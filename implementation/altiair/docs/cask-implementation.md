@@ -175,7 +175,7 @@ export FOUNDRY_TOKEN="<developer-console-token>"
 npm install --no-save <generated-osdk-package-name>@latest
 ```
 
-If Atlas provides a downloaded package tarball instead of registry install, use the same no-save pattern, for example `npm install --no-save ~/Downloads/@cask-edge-service_sdk-0.1.0.tgz`.
+If Palantir provides a downloaded package tarball instead of registry install, use the same no-save pattern, for example `npm install --no-save ~/Downloads/@cask-edge-service_sdk-0.1.0.tgz`.
 
 Then run:
 
@@ -217,14 +217,14 @@ curl -sS http://127.0.0.1:8080/foundry/sync/latest
 
 In mock mode this returns a queued commander-sync package. In OSDK mode, the existing upload profile controls the direct write: `cask_gps_position` writes the currently available GPS/location slice, while `bundle_actions` writes the full bundle once the matching CASK actions exist.
 
-Current Atlas status is tracked in [Foundry Atlas Status](foundry-atlas-status.md). The visible hackathon ontology currently supports a narrow live smoke through `[Example] CASK GPS Position`; it does not yet expose the full CASK bundle ontology.
+Current Palantir status is tracked in [Palantir Foundry Status](foundry-status.md). The visible hackathon ontology currently supports a narrow live smoke through `[Example] CASK GPS Position`; it does not yet expose the full CASK bundle ontology.
 
 ## Expected Foundry Action Contract
 
 Choose the upload profile first:
 
 - `FOUNDRY_UPLOAD_PROFILE=bundle_actions`: full local CASK contract, for when the ontology has matching typed actions.
-- `FOUNDRY_UPLOAD_PROFILE=cask_gps_position`: current Atlas-compatible smoke profile that writes only `LocationFix` records to `[Example] CASK GPS Position`.
+- `FOUNDRY_UPLOAD_PROFILE=cask_gps_position`: current Palantir-compatible smoke profile that writes only `LocationFix` records to `[Example] CASK GPS Position`.
 
 Until we lock the exact ontology action parameter names in Foundry, the uploader supports two payload styles:
 

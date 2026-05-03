@@ -1837,7 +1837,7 @@ function renderMissionNarrative(state, readinessScore, confidenceScore) {
     },
     foundry: {
       status: foundryConnected ? "Connected" : "Cached/mock",
-      detail: foundryConnected ? "Governed Atlas context is live." : "Runs from cached or fixture context.",
+      detail: foundryConnected ? "Governed Palantir context is live." : "Runs from cached or fixture context.",
       className: foundryConnected ? "is-live" : "is-warning",
     },
     cask: {

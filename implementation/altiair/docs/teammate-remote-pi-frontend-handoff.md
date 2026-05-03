@@ -25,7 +25,7 @@ npm run foundry:direct:smoke
 npm run node:api:foundry -- --node altiair-hub
 ```
 
-This writes only the current Atlas-supported GPS/location slice and reads the available generated object exports. Full CASK bundle writeback waits on the expanded ontology/action set.
+This writes only the current Palantir-supported GPS/location slice and reads the available generated object exports. Full CASK bundle writeback waits on the expanded ontology/action set.
 
 ## What Runs On Each Node
 
@@ -272,7 +272,7 @@ Mock data contract details are in [Mock CASK Demo Data](mock-cask-demo-data.md).
 
 ## CASK and Foundry Status
 
-The repo has a live OSDK path validated against the current Atlas ontology for `[Example] CASK GPS Position`. That supports first writeback smoke tests for RFID-derived provider-style GPS/location fixes.
+The repo has a live OSDK path validated against the current Palantir ontology for `[Example] CASK GPS Position`. That supports first writeback smoke tests for RFID-derived provider-style GPS/location fixes.
 
 The full CASK bundle ontology is still represented locally in `src/cask/ontology.ts` and should queue locally until the matching Foundry ontology object/action types exist and are scoped into the generated OSDK package.
 

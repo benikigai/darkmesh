@@ -65,7 +65,7 @@ The deeper decision brief is here:
 - [CASK OSDK and Local LLM Brief](docs/cask-osdk-local-llm-brief.md)
 - [CASK Edge Implementation](docs/cask-implementation.md)
 - [CASK Ontology Approach](docs/cask-ontology-approach.md)
-- [Foundry Atlas Status](docs/foundry-atlas-status.md)
+- [Palantir Foundry Status](docs/foundry-status.md)
 - [DDIL Edge Mesh Implementation](docs/ddil-edge-mesh-implementation.md)
 - [Distributed Resolution Demo](docs/distributed-resolution-demo.md)
 - [Replicated Mission Ledger](docs/replicated-mission-ledger.md)
@@ -121,7 +121,7 @@ The repo now includes a runnable TypeScript integration scaffold for the Foundry
 - `src/mock/caskDemoScenario.ts` and `npm run mock:replay`: deterministic camera, microphone, RFID, provider-style location, and node-health mock events for the full CASK demo path.
 - `scripts/pi/`: Pi/Jetson deployment scripts, env templates, sensor-event poster, and local-instruction watcher.
 
-The current Atlas ontology has a narrow live path for `[Example] CASK GPS Position`. Use `FOUNDRY_UPLOAD_PROFILE=cask_gps_position` for the first live OSDK writeback smoke. Keep `FOUNDRY_UPLOAD_PROFILE=bundle_actions` for the full local CASK contract once matching ontology actions exist.
+The current Palantir ontology has a narrow live path for `[Example] CASK GPS Position`. Use `FOUNDRY_UPLOAD_PROFILE=cask_gps_position` for the first live OSDK writeback smoke. Keep `FOUNDRY_UPLOAD_PROFILE=bundle_actions` for the full local CASK contract once matching ontology actions exist.
 
 Foundry is opportunistic, not required for decentralized operation. Use `GET /foundry/intelligence?refresh=true` only when a gateway node has connectivity and credentials; it pulls governed context into the local cache for the LLM and commander-facing evidence citations. When disconnected, the same node API continues from cached/local CASK records and queues commander sync until reconnection.
 

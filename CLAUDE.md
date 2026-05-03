@@ -70,7 +70,7 @@ One-line integration story: Hawkeye sees, Foundry governs and records, CASK shap
 The website should make this path obvious:
 
 1. Mission directive appears in the browser.
-2. Foundry/Atlas context and operator intent become a CASK deployment order.
+2. Palantir Foundry context and operator intent become a CASK deployment order.
 3. CASK creates node leases and per-node responsibilities.
 4. Edge nodes emit compact evidence:
    - RFID/provider-style proximity.
