@@ -358,42 +358,42 @@
           <p class="eyebrow">Live at the bench</p>
           <h2>Running right now on a Jetson Nano, three Raspberry Pis, and an iPad chest computer.</h2>
           <p>
-            The mesh isn't a slide. A four-node fleet — Jetson Orin Nano <code>altiair-orin</code>, Raspberry Pi 5 <code>altiair-hub</code>, and two Raspberry Pi 4B sensor peers <code>altiair-node-a</code> / <code>altiair-node-b</code> — sits at the team bench, joined to the local Altiair-LAN over Wi-Fi, running the same node API, Ollama-served Gemma 4 e2b inference, and CASK evidence-bundle pipeline. An iPad on a chest harness mirrors the operator console as a wearable EagleEye-style display. Foundry / CASK sync queues locally until any gateway gets an uplink. Pull power from any one node and the surviving peers keep the mission picture.
+            A four-node fleet on the team bench, <strong>plugged in and running right now</strong>: Jetson Orin Nano <code>altiair-orin</code>, Pi 5 <code>altiair-hub</code>, two Pi 4B sensor peers, and an iPad chest harness. Same Altiair-LAN, same node API, same Gemma 4 e2b on-device inference. The dropout demo is <strong>triggered over SSH</strong> — judges never watch us unplug a Pi. The mesh stays powered through the whole pitch.
           </p>
           <ul class="bench-facts">
             <li>
               <strong>altiair-orin</strong>
-              Jetson Orin Nano · LAN host · USB mic · accelerated inference · secondary Foundry gateway
+              Jetson Orin Nano · LAN host · accelerated inference · gateway
             </li>
             <li>
               <strong>altiair-hub</strong>
-              Pi 5 · operator display · USB camera · local queue · preferred Foundry / CASK gateway
+              Pi 5 · operator display + USB camera · primary gateway
             </li>
             <li>
-              <strong>altiair-node-a / altiair-node-b</strong>
-              Pi 4B · edge sensors · RFID + provider-style location · replicated ledger
+              <strong>altiair-node-a / -b</strong>
+              Pi 4B · sensors · RFID · replicated ledger
             </li>
             <li>
-              <strong>iPad chest computer</strong>
-              Wearable operator console · live mesh + cue overlay · EagleEye-style readout
+              <strong>iPad chest harness</strong>
+              Wearable EagleEye console
             </li>
             <li>
-              <strong>Local LAN mesh on Wi-Fi</strong>
-              Altiair-LAN hosted on-site · no cloud, no internet path required
+              <strong>Local Wi-Fi mesh</strong>
+              No cloud, no internet path
             </li>
             <li>
-              <strong>gemma4:e2b on-device</strong>
-              Ollama-served · ~50–60°C under sustained inference with active cooling
+              <strong>gemma4:e2b</strong>
+              Ollama-served on-device
             </li>
             <li>
               <strong>Survivable</strong>
-              Replicated ledger, gossip, and Raft-style coordinator across all four nodes
+              Replicated ledger + Raft-style coordinator
             </li>
           </ul>
         </div>
         <figure class="bench-visual">
-          <img src="./assets/hardware/darkmesh-pis.jpg" alt="Edge fleet at the team bench: Jetson Orin Nano, Raspberry Pi 5 hub, two Pi 4B sensor peers, and iPad chest-worn operator console, joined to local Altiair-LAN over Wi-Fi" />
-          <figcaption>Edge fleet at the bench — running the same code as the live demo above.</figcaption>
+          <img src="./assets/hardware/darkmesh-pis.jpg" alt="Edge fleet at the team bench: Jetson Orin Nano, Raspberry Pi 5 hub, two Pi 4B sensor peers, and iPad chest-worn operator console, plugged in and running on local Altiair-LAN over Wi-Fi" />
+          <figcaption><strong>Live: hardware plugged in and running at the bench right now.</strong> Node-dropout demo is triggered over SSH — no Pi gets unplugged.</figcaption>
         </figure>
       </section>
 
