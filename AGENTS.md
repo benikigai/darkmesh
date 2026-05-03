@@ -95,8 +95,7 @@ Current files in this repo:
 - `screenshots/*.png`: captured proof screenshots.
 - `pitch.md` and `pitch2.md`: pitch narrative drafts.
 - `pitch_final.md`: latest imported final pitch draft.
-- `docs/demo-flow-chart.md`: editable flow-chart source.
-- `docs/product-flow-chart.md`: Rob's latest product-flow chart source.
+- `docs/demo-flow-chart.md`: canonical single flow-chart source.
 - `implementation/altiair/`: imported implementation repo snapshot with the node API, CASK/Foundry code, Rust durable agent, Pi/Jetson scripts, local LLM path, and demo launcher.
 - `vercel.json`: static-site security headers.
 
