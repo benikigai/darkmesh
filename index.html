@@ -1,88 +1,417 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Darkmesh — Tactical Edge Mesh for DDIL Environments</title>
-<meta name="description" content="Decentralized C2 mesh that survives jammed networks and dead nodes. Built for DDIL environments. NatSec Hackathon 2026.">
-<meta property="og:title" content="Darkmesh">
-<meta property="og:description" content="Tactical edge mesh C2 for DDIL environments. NatSec Hackathon 2026.">
-<style>
-  :root { --bg:#0a0a0a; --bg-2:#111; --fg:#e5e7eb; --dim:#71717a; --accent:#f97316; --line:#27272a; }
-  *{box-sizing:border-box} body{background:var(--bg);color:var(--fg);font-family:'JetBrains Mono','IBM Plex Mono',ui-monospace,Menlo,monospace;margin:0;line-height:1.6}
-  .container{max-width:920px;margin:0 auto;padding:64px 32px}
-  header{border-bottom:1px solid var(--line);padding-bottom:32px;margin-bottom:64px}
-  .badge{color:var(--accent);font-size:12px;letter-spacing:.15em;text-transform:uppercase}
-  h1{font-size:64px;font-weight:800;margin:16px 0 8px;letter-spacing:-.03em;color:#fafafa}
-  h1 span{color:var(--accent)}
-  .tagline{font-size:22px;color:var(--dim);margin:0;max-width:700px}
-  h2{font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:.15em;margin:64px 0 16px}
-  h3{font-size:20px;color:#fafafa;margin:32px 0 8px}
-  .grid{display:grid;gap:24px;grid-template-columns:1fr 1fr;margin-top:32px}
-  @media (max-width:700px){.grid{grid-template-columns:1fr}}
-  .card{background:var(--bg-2);border:1px solid var(--line);padding:24px}
-  .card h3{margin-top:0;color:var(--accent)}
-  pre{background:var(--bg-2);border:1px solid var(--line);padding:16px;overflow-x:auto;color:var(--fg);font-size:13px;line-height:1.4}
-  .arch{white-space:pre;font-size:12px;color:var(--dim)}
-  .arch span{color:var(--accent)}
-  ul{list-style:none;padding:0} li{padding:8px 0;border-bottom:1px solid var(--line)} li::before{content:"\2192  ";color:var(--accent)}
-  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent} a:hover{border-bottom-color:var(--accent)}
-  footer{margin-top:80px;padding-top:32px;border-top:1px solid var(--line);color:var(--dim);font-size:13px}
-</style>
-</head>
-<body>
-<div class="container">
-<header>
-  <div class="badge">DDIL · TACTICAL EDGE · COUNTER-UAS</div>
-  <h1>Dark<span>mesh</span></h1>
-  <p class="tagline">Decentralized command-and-control for environments where the network is jammed and the coordinator just got killed.</p>
-</header>
-<h2>// The Problem</h2>
-<p>The DoD's nightmare is a near-peer fight where adversaries jam Starlink and sever cloud links — <em>and</em> nodes get hit, batteries die, bags get dropped. Most C2 stacks have a single point of failure even after you cut the cloud. Darkmesh survives both.</p>
-<h2>// Architecture</h2>
-<pre class="arch">
-TIER 3 — Palantir Foundry / CASK / OSDK
-         &#x25B2; store-and-forward when uplink returns
-         &#9474; AIP Logic: severity + SITREP + cue draft
-         &#9474;
-TIER 2 — Jetson Orin Nano + 2&#215; Raspberry Pi 4B
-         &#x25B2; private LAN (no internet, no satellite)
-         &#9474; Local LLM on every node (Gemma 4 e2b / Gemma 3)
-         &#9474; Raft-style coordinator election
-         &#9474; Gossip-replicated world state
-         &#9474;
-TIER 1 — Sensors: camera, microphone, RFID, location
-         <span>&#x2193; multimodal fusion &rarr; CASK evidence bundles</span>
-</pre>
-<h2>// What's Different</h2>
-<div class="grid">
-  <div class="card"><h3>No single point of failure</h3><p>Kill the coordinator mid-pitch. Another node assumes command in under one second via Raft heartbeat consensus. No data loss. No operator awareness gap.</p></div>
-  <div class="card"><h3>No cloud assumptions</h3><p>Gemma 4 e2b runs on the Jetson, Gemma 3 on each Pi. Multimodal sensor fusion happens locally. When uplink returns, evidence reconciles to Palantir Foundry.</p></div>
-  <div class="card"><h3>Real partner integrations</h3><p>Palantir AIP for severity classification + SITREP drafts. Foundry OSDK for ontology mirror + writeback. Danti for geospatial enrichment. OpenAI Codex for build velocity.</p></div>
-  <div class="card"><h3>Human-in-the-loop, always</h3><p>Counter-UAS cueing only — no autonomous engagement, no kill chain automation. Every actionable output is policy-gated and operator-acknowledged.</p></div>
-</div>
-<h2>// Doctrinal Alignment</h2>
-<ul>
-  <li><strong>DARPA DICE</strong> — distributed C2 resilience program</li>
-  <li><strong>Pentagon Replicator initiative</strong> — attritable autonomous systems</li>
-  <li><strong>USMC MAGTF</strong> — Marine Air-Ground Task Force, our user persona</li>
-  <li><strong>JADC2</strong> — what edge resilience looks like when the network goes dark</li>
-</ul>
-<h2>// Stack</h2>
-<p>Memory-safe Rust durable agent &middot; TypeScript orchestration &middot; Python sensor adapters &middot; FastAPI + WebSocket fanout &middot; SQLite event store &middot; llama.cpp + Ollama local inference &middot; Kafka-shaped stream spine (broker-optional) &middot; WireGuard overlay &middot; Palantir Foundry + AIP + OSDK &middot; Danti geospatial.</p>
-<h2>// Team Altiair</h2>
-<p>Sarah Hatcher &middot; Benjamin Shyong &middot; Rob Grossman &middot; Katherine Lambert</p>
-<p>Built in 24 hours at the 3rd Annual <a href="https://cerebralvalley.ai/e/3rd-annual-natsec-hackathon">NatSec Hackathon</a> (Cerebral Valley &times; Army xTech), Shack15 SF, May 2&ndash;3 2026.</p>
-<h2>// Links</h2>
-<ul>
-  <li>Repository: <a href="https://github.com/digitalnomd/altiair">github.com/digitalnomd/altiair</a></li>
-  <li>Demo video: <em>coming soon</em></li>
-  <li>Track: Problem Statement 2 &mdash; Edge Deployments and Drone Operation</li>
-</ul>
-<footer>
-  <p>~$400 of edge hardware. Zero cloud dependencies. Aligned with current DoD doctrine for resilient distributed C2.</p>
-  <p>&copy; 2026 Team Altiair. Built for national security.</p>
-</footer>
-</div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>darkmesh by Altair</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <svg aria-hidden="true" class="icon-sprite" focusable="false">
+      <symbol id="icon-crosshair" viewBox="0 0 24 24">
+        <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
+        <circle cx="12" cy="12" r="7"></circle>
+        <circle cx="12" cy="12" r="2.2"></circle>
+      </symbol>
+      <symbol id="icon-wave" viewBox="0 0 24 24">
+        <path d="M2 12h3l2-7 4 14 3-10 2 5h6"></path>
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 3l7 3v5c0 4.8-2.9 8.2-7 10-4.1-1.8-7-5.2-7-10V6l7-3z"></path>
+        <path d="M12 8v5M12 16h.01"></path>
+      </symbol>
+      <symbol id="icon-antenna" viewBox="0 0 24 24">
+        <path d="M12 18v4M8.2 14.2a5.4 5.4 0 1 1 7.6 0M5.4 11.4a9.3 9.3 0 1 1 13.2 0"></path>
+        <circle cx="12" cy="10" r="1.7"></circle>
+      </symbol>
+      <symbol id="icon-chevrons" viewBox="0 0 24 24">
+        <path d="M7 7l5 5-5 5M13 7l5 5-5 5"></path>
+      </symbol>
+      <symbol id="icon-eye" viewBox="0 0 24 24">
+        <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"></path>
+        <circle cx="12" cy="12" r="2.8"></circle>
+      </symbol>
+      <symbol id="icon-radio" viewBox="0 0 24 24">
+        <path d="M6 14a6 6 0 0 1 12 0M3 14a9 9 0 0 1 18 0M9 14a3 3 0 0 1 6 0"></path>
+        <path d="M12 14v7M8 21h8"></path>
+      </symbol>
+      <symbol id="icon-audio" viewBox="0 0 24 24">
+        <path d="M4 12h2l2-6 4 12 3-9 2 3h3"></path>
+      </symbol>
+      <symbol id="icon-team" viewBox="0 0 24 24">
+        <path d="M16 11a3 3 0 1 0-2.7-4.3M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+        <path d="M2.5 20a5.5 5.5 0 0 1 11 0M13.5 20a4.8 4.8 0 0 1 8 0"></path>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="M20 6L9 17l-5-5"></path>
+      </symbol>
+      <symbol id="icon-alert" viewBox="0 0 24 24">
+        <path d="M12 3l10 18H2L12 3z"></path>
+        <path d="M12 9v5M12 17h.01"></path>
+      </symbol>
+      <symbol id="icon-compass" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M16.2 7.8l-2.7 6-5.7 2.4 2.7-6 5.7-2.4z"></path>
+      </symbol>
+      <symbol id="icon-refresh" viewBox="0 0 24 24">
+        <path d="M20 11a8 8 0 0 0-14.9-3M4 5v5h5M4 13a8 8 0 0 0 14.9 3M20 19v-5h-5"></path>
+      </symbol>
+      <symbol id="icon-pause" viewBox="0 0 24 24">
+        <path d="M8 5v14M16 5v14"></path>
+      </symbol>
+      <symbol id="icon-play" viewBox="0 0 24 24">
+        <path d="M8 5l11 7-11 7V5z"></path>
+      </symbol>
+      <symbol id="icon-radar" viewBox="0 0 24 24">
+        <path d="M4 20a8 8 0 1 1 16 0"></path>
+        <path d="M8 20a4 4 0 1 1 8 0"></path>
+        <path d="M12 20V4l7 9"></path>
+        <circle cx="12" cy="20" r="1.6"></circle>
+      </symbol>
+      <symbol id="icon-cpu" viewBox="0 0 24 24">
+        <rect x="7" y="7" width="10" height="10" rx="1.8"></rect>
+        <path d="M10 1v4M14 1v4M10 19v4M14 19v4M1 10h4M1 14h4M19 10h4M19 14h4"></path>
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2"></path>
+      </symbol>
+    </svg>
+
+    <div class="ambient-field" aria-hidden="true"></div>
+
+    <main class="site-frame">
+      <section class="hero-section" id="mission-brief" aria-label="darkmesh mission brief">
+        <div class="hero-copy">
+          <p class="eyebrow">Live DDIL edge demo / Foundry + CASK + local mesh</p>
+          <h1 class="hero-title">darkmesh</h1>
+          <p class="hero-lede">
+            Altair deploys a decentralized sensor mesh, fuses weak field evidence into one human-reviewed cue, survives node loss, and syncs the mission record back to Foundry.
+          </p>
+          <div class="hero-actions" aria-label="Demo actions">
+            <button class="primary-action" type="button" data-scroll-target="live-demo">
+              <svg><use href="#icon-play"></use></svg>
+              Start live pass
+            </button>
+            <a class="secondary-action" href="#architecture">
+              <svg><use href="#icon-shield"></use></svg>
+              Architecture
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Demo flow preview">
+          <img src="../assets/pitch/demo-flow-chart.svg" alt="darkmesh live demo flow from sensor ingest through Foundry synchronization">
+        </div>
+        <div class="privacy-strip" aria-label="Privacy boundary">
+          <span>Privacy boundary</span>
+          <strong>No personal windows, raw private media, or credentials are captured by this page.</strong>
+        </div>
+      </section>
+
+      <section class="narrative-section" aria-label="Mission narrative">
+        <div class="narrative-copy">
+          <p class="eyebrow">Scenario</p>
+          <h2>Find the useful cue without depending on one command node.</h2>
+          <p>
+            A drone-class event appears in a contested training area. One node has RFID and Wi-Fi proximity context, one has Hawkeye/vision, one has microphone context, and Foundry provides governed mission intelligence. darkmesh turns those fragments into a policy-gated controller-zone cue for human review.
+          </p>
+        </div>
+        <div class="narrative-columns" aria-label="Mission ingredients">
+          <article>
+            <span>01</span>
+            <strong>Mission directive</strong>
+            <p>Foundry/Atlas context and operator intent become a CASK deployment order with leases for each edge node.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <strong>Distributed evidence</strong>
+            <p>Camera, microphone, RFID/provider-style proximity, and node health arrive as compact typed records instead of raw stream dependency.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <strong>Coordinator failover</strong>
+            <p>If the active coordinator drops, the replicated ledger and gossip state let a surviving node keep the mission picture alive.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <strong>Commander sync</strong>
+            <p>When a gateway is available, the evidence, decisions, policy gates, and coordinator terms reconcile back to Foundry.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="live-demo-section" id="live-demo" aria-label="Live darkmesh demo">
+        <div class="stage-header">
+          <div>
+            <p class="eyebrow">Live mission pass</p>
+            <h2>Mission directive to edge coordination.</h2>
+          </div>
+          <div class="runtime-source" aria-label="Runtime source">
+            <span id="sourceMode">Detecting source</span>
+            <strong id="flowStatus">Waiting for CASK state</strong>
+          </div>
+        </div>
+
+        <div id="missionFlow" class="mission-flow" aria-label="Mission execution flow"></div>
+
+        <div class="app-shell" data-view="fusion">
+      <header class="titlebar">
+        <div class="titlebar-main">
+          <div class="titlebar-top">
+            <div class="brand-lockup">
+              <span class="brand-mark">DM</span>
+              <div>
+                <p class="eyebrow">DARPA field prototype / Altair local mesh</p>
+                <h1>darkmesh Mission Copilot</h1>
+              </div>
+            </div>
+            <div class="command-readout" aria-label="Runtime telemetry">
+              <span>
+                <b id="missionClock">--:--:--</b>
+                <small>Local clock</small>
+              </span>
+              <span>
+                <b id="readinessScore">--</b>
+                <small>Mission readiness</small>
+              </span>
+              <span>
+                <b id="lastUpdate">--</b>
+                <small>Last fusion</small>
+              </span>
+            </div>
+          </div>
+          <section class="mission-strip header-strip" aria-label="Mission summary">
+            <article class="summary-cell">
+              <svg class="summary-icon"><use href="#icon-crosshair"></use></svg>
+              <div>
+                <p>Mission</p>
+                <strong id="missionName">-</strong>
+              </div>
+            </article>
+            <article class="summary-cell">
+              <svg class="summary-icon"><use href="#icon-wave"></use></svg>
+              <div>
+                <p>Status</p>
+                <strong id="meshStatus">-</strong>
+              </div>
+            </article>
+            <article class="summary-cell">
+              <svg class="summary-icon"><use href="#icon-shield"></use></svg>
+              <div>
+                <p>Confidence</p>
+                <strong id="confidenceLabel" class="metric-warning">-</strong>
+              </div>
+            </article>
+            <article class="summary-cell">
+              <svg class="summary-icon"><use href="#icon-antenna"></use></svg>
+              <div>
+                <p>Latest fused event</p>
+                <strong id="latestEvent">-</strong>
+              </div>
+            </article>
+          </section>
+        </div>
+      </header>
+
+      <nav class="viewport-tabs" aria-label="Map mode">
+        <button class="view-mode-button is-active" type="button" data-view-mode="fusion">
+          <svg><use href="#icon-radar"></use></svg>
+          Fusion
+        </button>
+        <button class="view-mode-button" type="button" data-view-mode="spectrum">
+          <svg><use href="#icon-wave"></use></svg>
+          Spectrum
+        </button>
+        <button class="view-mode-button" type="button" data-view-mode="command">
+          <svg><use href="#icon-cpu"></use></svg>
+          Command
+        </button>
+      </nav>
+
+      <section class="ops-grid" aria-label="Hawkeye operations workspace">
+        <main class="map-panel" aria-label="Mission map">
+          <div class="legend" aria-label="Map legend">
+            <div><span class="legend-mark node-friendly"></span>Friendly Node</div>
+            <div><span class="legend-mark node-degraded"></span>Degraded Node</div>
+            <div><span class="legend-line mesh-link"></span>Mesh Link</div>
+            <div><span class="legend-mark fov-mark"></span>Camera FOV</div>
+            <div><span class="legend-line rf-line"></span>RF Bearing</div>
+            <div><span class="legend-mark fused-mark"></span>Fused Detection</div>
+            <div><span class="legend-mark objective-mark"></span>Objective Area</div>
+            <div><span class="legend-line trail-line"></span>Track Trail</div>
+          </div>
+
+          <div id="baseMap" class="base-map" aria-hidden="true"></div>
+
+          <svg id="mapSvg" class="map-svg" viewBox="0 0 1200 390" preserveAspectRatio="none" role="img" aria-labelledby="mapTitle mapDesc">
+            <title id="mapTitle">Mission mesh map</title>
+            <desc id="mapDesc">Nodes, mesh links, sensor fields of view, objective area, and fused event estimate.</desc>
+          </svg>
+
+          <div class="scan-beam" aria-hidden="true"></div>
+          <div class="map-noise" aria-hidden="true"></div>
+
+          <div class="compass" aria-hidden="true">
+            <span>N</span>
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2l4.8 19L12 17.8 7.2 21 12 2z"></path>
+            </svg>
+          </div>
+
+          <div class="scale" aria-hidden="true">
+            <span>0</span>
+            <span>500m</span>
+            <span>1km</span>
+            <div class="scale-bar">
+              <i></i><i></i><i></i>
+            </div>
+          </div>
+
+          <div class="map-footer" aria-hidden="true">
+            <span id="mapCoordinateReadout">Coordinate grid: pending</span>
+            <span>Autonomy: review gated</span>
+            <span id="mapAttribution">Map tiles via local proxy</span>
+          </div>
+        </main>
+
+        <aside class="target-panel" aria-label="Track and node orders">
+          <section class="track-section" aria-label="Track">
+            <div class="target-header">
+              <span class="target-kicker">Track</span>
+              <strong id="targetCallsign">HK-UAS-TRACK-01</strong>
+            </div>
+            <div class="confidence-dial" aria-label="Track confidence score">
+              <div class="dial-ring" id="confidenceDial"></div>
+              <div>
+                <b id="targetConfidenceScore">--%</b>
+                <span id="targetConfidenceLabel">Track confidence</span>
+              </div>
+            </div>
+            <dl class="target-facts">
+              <div>
+                <dt>Bearing</dt>
+                <dd id="targetBearing">--</dd>
+              </div>
+              <div>
+                <dt>Grid</dt>
+                <dd id="targetGrid">--</dd>
+              </div>
+              <div>
+                <dt>Type</dt>
+                <dd id="targetType">--</dd>
+              </div>
+              <div>
+                <dt>Last seen</dt>
+                <dd id="targetLastSeen">--</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="node-orders-section" aria-label="Node orders">
+            <p class="panel-label">Node orders</p>
+            <div class="coordinator-readout">
+              <span>Active coordinator: <b id="coordinatorLeader">NODE 1</b></span>
+              <span class="coordinator-star" aria-hidden="true">&#9733;</span>
+            </div>
+            <div class="order-divider order-divider-top" aria-hidden="true"></div>
+            <div id="nodeOrders" class="node-orders-list"></div>
+            <div class="order-divider order-divider-bottom" aria-hidden="true"></div>
+            <div class="failover-row">
+              <span>Coordinator failover:</span>
+              <b id="failoverState">ARMED</b>
+            </div>
+            <div class="handoff-row">Last handoff: <span id="lastHandoff">&mdash;</span></div>
+          </section>
+
+        </aside>
+      </section>
+
+      <section class="cue-chain-row" aria-label="Cue chain">
+        <p class="panel-label">Cue chain</p>
+        <div id="cueChain" class="cue-steps"></div>
+      </section>
+
+      <section class="dashboard-bottom" aria-label="Operator decisions and evidence">
+        <article class="next-action-card">
+          <div class="action-glyph">
+            <svg><use href="#icon-compass"></use></svg>
+          </div>
+          <div>
+            <p>Your next action</p>
+            <strong id="operatorAction">-</strong>
+          </div>
+        </article>
+
+        <article class="evidence-card">
+          <div class="card-header">
+            <p>Evidence summary</p>
+            <span id="policyGate" class="policy-pill">-</span>
+          </div>
+          <div id="evidenceMetrics" class="evidence-grid"></div>
+        </article>
+      </section>
+        </div>
+      </section>
+
+      <section class="proof-section" aria-label="Runtime proof">
+        <div class="proof-copy">
+          <p class="eyebrow">Working code path</p>
+          <h2>What the website is proving live.</h2>
+          <p>
+            The page reads the same node API that the Pi and Jetson nodes expose. In local demo mode, `npm run demo:start -- --include-failure-step` starts the API, seeds the mission, runs the sensor scenario, starts the UI proxy, and verifies the runtime products before the site opens.
+          </p>
+        </div>
+        <div id="runtimeProof" class="proof-grid" aria-label="Live runtime checks"></div>
+      </section>
+
+      <section class="architecture-section" id="architecture" aria-label="darkmesh architecture">
+        <div class="architecture-copy">
+          <p class="eyebrow">System architecture</p>
+          <h2>Robust, safe, secure edge coordination.</h2>
+          <p>
+            Foundry and CASK shape the mission data. darkmesh keeps the local runtime useful when the uplink or one node fails, while policy gates, signed records, encrypted payloads, and memory-safe durable components keep the demo on a production path.
+          </p>
+        </div>
+
+        <div class="uml-board" role="img" aria-label="UML-style architecture diagram for darkmesh">
+          <div class="uml-lane lane-command">
+            <span class="lane-label">Command / Foundry</span>
+            <div class="uml-node">Operator website</div>
+            <div class="uml-arrow"></div>
+            <div class="uml-node">Foundry Atlas / OSDK</div>
+            <div class="uml-arrow"></div>
+            <div class="uml-node">CASK ontology</div>
+          </div>
+          <div class="uml-lane lane-edge">
+            <span class="lane-label">Edge runtime</span>
+            <div class="uml-node">Node API</div>
+            <div class="uml-arrow"></div>
+            <div class="uml-node">Replicated ledger</div>
+            <div class="uml-arrow"></div>
+            <div class="uml-node" id="archCoordinator">Elected coordinator</div>
+          </div>
+          <div class="uml-lane lane-sensors">
+            <span class="lane-label">Sensors / models</span>
+            <div class="uml-node">RFID + Wi-Fi proximity</div>
+            <div class="uml-node">Hawkeye / camera</div>
+            <div class="uml-node">Microphone context</div>
+            <div class="uml-node">Local Gemma/Ollama insight</div>
+          </div>
+          <div class="uml-lane lane-safety">
+            <span class="lane-label">Safety / security</span>
+            <div class="uml-node" id="archSecurity">Policy gate</div>
+            <div class="uml-node">AES-256-GCM envelopes</div>
+            <div class="uml-node">Ed25519 signed records</div>
+            <div class="uml-node">Rust durable agent</div>
+          </div>
+          <div class="uml-outcome">
+            <strong id="archSync">Foundry sync queued until gateway is available</strong>
+            <span>Human-reviewed cue, source citations, node-health state, coordinator term, and after-action record.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
 </html>
