@@ -13,8 +13,8 @@
   --muted-2: #7f8085;
   --cyan: #65c7ff;
   --cyan-soft: rgba(101, 199, 255, 0.14);
-  --amber: #d3b568;
-  --amber-soft: rgba(211, 181, 104, 0.14);
+  --amber: #2f7d5b;
+  --amber-soft: rgba(47, 125, 91, 0.18);
   --green: #8bd0ff;
   --red: #c7463f;
   --violet: #b8b8bd;
@@ -22,8 +22,8 @@
   --blue-grey: #415774;
   --region-blue: rgba(91, 182, 255, 0.18);
   --region-blue-strong: rgba(129, 207, 255, 0.62);
-  --region-amber: rgba(228, 195, 105, 0.18);
-  --region-amber-strong: rgba(232, 205, 123, 0.66);
+  --region-amber: rgba(47, 125, 91, 0.2);
+  --region-amber-strong: rgba(47, 125, 91, 0.7);
   --shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
 }
 
@@ -153,8 +153,7 @@ button {
 }
 
 .hero-copy,
-.hero-visual,
-.privacy-strip {
+.hero-visual {
   position: relative;
   z-index: 1;
 }
@@ -165,7 +164,7 @@ button {
 
 .hero-title {
   margin: 0;
-  color: var(--text);
+  color: var(--amber);
   font-size: 6.2rem;
   line-height: 0.88;
   font-weight: 900;
@@ -239,34 +238,6 @@ button {
   max-height: 72svh;
   object-fit: contain;
   filter: drop-shadow(0 34px 70px rgba(0, 0, 0, 0.5));
-}
-
-.privacy-strip {
-  position: absolute;
-  left: 36px;
-  right: 36px;
-  bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-height: 44px;
-  padding: 0 16px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: rgba(2, 5, 6, 0.68);
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-
-.privacy-strip span {
-  color: var(--amber);
-  font-weight: 840;
-  text-transform: uppercase;
-}
-
-.privacy-strip strong {
-  color: var(--text);
-  font-weight: 560;
 }
 
 .narrative-section,
@@ -428,7 +399,7 @@ button {
 }
 
 .flow-step.is-warning {
-  background: rgba(211, 181, 104, 0.1);
+  background: rgba(47, 125, 91, 0.12);
 }
 
 .flow-step.is-blocked {
@@ -675,6 +646,10 @@ h1 {
   overflow-wrap: anywhere;
 }
 
+.brand-lockup h1 {
+  color: var(--amber);
+}
+
 .command-readout {
   display: grid;
   grid-template-columns: repeat(3, minmax(82px, auto));
@@ -886,7 +861,7 @@ svg use {
 
 .summary-cell .metric-warning {
   color: var(--amber);
-  text-shadow: 0 0 14px rgba(211, 181, 104, 0.18);
+  text-shadow: 0 0 14px rgba(47, 125, 91, 0.22);
 }
 
 .summary-cell .metric-good {
@@ -1238,7 +1213,7 @@ svg use {
   stroke: var(--region-amber-strong);
   stroke-width: 1.5;
   stroke-dasharray: 10 7;
-  filter: drop-shadow(0 0 14px rgba(232, 205, 123, 0.16));
+  filter: drop-shadow(0 0 14px rgba(47, 125, 91, 0.2));
 }
 
 .control-source-cross {
@@ -1388,8 +1363,8 @@ svg use {
 }
 
 .legend-mark.objective-mark {
-  border: 1px solid rgba(164, 139, 78, 0.58);
-  background: rgba(211, 181, 104, 0.16);
+  border: 1px solid rgba(47, 125, 91, 0.58);
+  background: rgba(47, 125, 91, 0.18);
 }
 
 .legend-line.rf-line {
@@ -1771,7 +1746,7 @@ svg use {
 .cue-chain-row .cue-step.active {
   color: var(--text);
   background:
-    linear-gradient(90deg, rgba(211, 181, 104, 0.12), rgba(65, 87, 116, 0.12), rgba(255, 255, 255, 0.02)),
+    linear-gradient(90deg, rgba(47, 125, 91, 0.16), rgba(65, 87, 116, 0.12), rgba(255, 255, 255, 0.02)),
     rgba(255, 255, 255, 0.02);
 }
 
@@ -1809,7 +1784,7 @@ svg use {
 
 .pulse-icon.warn {
   color: var(--amber);
-  filter: drop-shadow(0 0 8px rgba(211, 181, 104, 0.16));
+  filter: drop-shadow(0 0 8px rgba(47, 125, 91, 0.22));
 }
 
 .pulse-icon.move {
@@ -1876,7 +1851,7 @@ svg use {
   min-height: 27px;
   align-items: center;
   padding: 0 10px;
-  border: 1px solid rgba(211, 181, 104, 0.28);
+  border: 1px solid rgba(47, 125, 91, 0.32);
   border-radius: 999px;
   color: var(--amber);
   font-size: 0.72rem;
@@ -2025,7 +2000,7 @@ svg use {
 
 .feed-dot.warn {
   background: var(--amber);
-  box-shadow: 0 0 10px rgba(211, 181, 104, 0.24);
+  box-shadow: 0 0 10px rgba(47, 125, 91, 0.28);
 }
 
 .feed-dot.bad {
@@ -2208,11 +2183,6 @@ svg use {
     padding-right: 18px;
   }
 
-  .privacy-strip {
-    left: 18px;
-    right: 18px;
-  }
-
   .hero-title {
     font-size: 5.6rem;
   }
@@ -2285,15 +2255,6 @@ svg use {
 
   .hero-lede {
     font-size: 1rem;
-  }
-
-  .privacy-strip {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 4px;
-    height: auto;
-    min-height: 0;
-    padding: 10px 12px;
   }
 
   .narrative-columns,
