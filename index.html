@@ -349,6 +349,38 @@
         </div>
       </section>
 
+      <section class="bench-section" aria-label="Pi 5 bench setup running the live mesh">
+        <div class="bench-copy">
+          <p class="eyebrow">Live at the bench</p>
+          <h2>Running right now on a Pi 5 at our desk.</h2>
+          <p>
+            The mesh isn't a slide. <code>altiair-hub</code> is a Raspberry Pi 5 sitting on the team bench, powered on, joined to the local Altiair-LAN over Wi-Fi, running the same node API, Ollama-served Gemma 4 e2b inference, and CASK evidence-bundle pipeline that the rest of the fleet exposes. Foundry / CASK sync queues locally until any gateway gets an uplink. Pull power from any one node and the surviving peers keep the mission picture.
+          </p>
+          <ul class="bench-facts">
+            <li>
+              <strong>altiair-hub</strong>
+              Pi 5 hub · operator display · local queue · preferred Foundry / CASK gateway
+            </li>
+            <li>
+              <strong>Local LAN mesh on Wi-Fi</strong>
+              Altiair-LAN hosted on-site · no cloud, no internet path required
+            </li>
+            <li>
+              <strong>gemma4:e2b on-device</strong>
+              Ollama-served · ~50–60°C under sustained inference with active cooling
+            </li>
+            <li>
+              <strong>Survivable</strong>
+              Replicated ledger, gossip, Raft-style coordinator across four nodes
+            </li>
+          </ul>
+        </div>
+        <figure class="bench-visual">
+          <img src="./screenshots/darkmesh-pi-setup.jpg" alt="Pi 5 mesh node powered on at the team bench, running darkmesh on local Altiair-LAN over Wi-Fi" />
+          <figcaption>altiair-hub · powered on, joined to Altiair-LAN, running the same code as the live demo above.</figcaption>
+        </figure>
+      </section>
+
       <section class="proof-section" aria-label="Runtime proof">
         <div class="proof-copy">
           <p class="eyebrow">Working code path</p>
@@ -405,6 +437,46 @@
             <span>Human-reviewed cue, source citations, node-health state, coordinator term, and after-action record.</span>
           </div>
         </div>
+      </section>
+
+      <section class="team-section" aria-label="Altair team">
+        <header class="team-header">
+          <p class="eyebrow">Team</p>
+          <h2>Built by Altair.</h2>
+          <p>Four engineers, twenty-four hours, one DDIL mission stack.</p>
+        </header>
+
+        <figure class="team-photo">
+          <img src="./screenshots/darkmesh-team.jpg" alt="Team Altair at NatSec Hackathon 2026, Shack15 SF" />
+          <figcaption>NatSec Hackathon 2026 · Shack15, San Francisco</figcaption>
+        </figure>
+
+        <div class="team-grid">
+          <a class="team-card" href="https://github.com/valencealignment" rel="noopener" target="_blank">
+            <strong>Sarah Hatcher</strong>
+            <span>@valencealignment</span>
+          </a>
+          <a class="team-card" href="https://github.com/benikigai" rel="noopener" target="_blank">
+            <strong>Benjamin Shyong</strong>
+            <span>@benikigai</span>
+          </a>
+          <a class="team-card" href="https://github.com/digitalnomd" rel="noopener" target="_blank">
+            <strong>Rob Grossman</strong>
+            <span>@digitalnomd</span>
+          </a>
+          <a class="team-card" href="https://github.com/StellarLuminosity" rel="noopener" target="_blank">
+            <strong>Katherine Lambert</strong>
+            <span>@StellarLuminosity</span>
+          </a>
+        </div>
+
+        <p class="team-repo-note">
+          Source &middot;
+          <a href="https://github.com/digitalnomd/altiair" rel="noopener" target="_blank">github.com/digitalnomd/altiair</a>
+          &nbsp;&nbsp;·&nbsp;&nbsp;
+          Site &middot;
+          <a href="https://github.com/benikigai/darkmesh" rel="noopener" target="_blank">github.com/benikigai/darkmesh</a>
+        </p>
       </section>
     </main>
 
