@@ -50,7 +50,7 @@ Most systems solve this in software simulation. We built it in hardware, running
 
 The command node — Node 1, the current coordinator — goes down.
 
-Physically unplug Node 1 or kill it on screen.
+Trigger the Node 1 dropout over SSH or stop the node service on screen while the Pi bench stays powered.
 Pause two seconds. Let judges watch.
 On screen, they should see:
 

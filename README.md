@@ -14,6 +14,19 @@ darkmesh is Altair's live demo site for tactical edge mesh coordination in DDIL 
 - SSH-triggered node-dropout narrative so the Pi bench can stay powered while the coordinator/failover proof remains live.
 - UML-style architecture view with policy gates, encrypted payloads, signed records, replicated ledger, and Rust durable-agent path.
 
+## Government opportunity alignment
+
+darkmesh maps to current DoD demand signals around decentralized AI coordination, DDIL swarm/robotic command, NGC2 common data layers, Open DAGIR interoperability, and CJADC2 edge sensor fusion:
+
+- DARPA special notice: [DARPA-SN-26-72, Decentralized Artificial Intelligence through Controlled Emergence (DICE)](https://www.darpa.mil/research/programs/decentralized-artificial-intelligence-through-controlled-emergence)
+- CDAO call for white papers: [Swarm Forge Prototype Project](https://www.tradewindai.com/swarm-forge)
+- Army OTA/CSO acquisition pathway: [Next Generation Command and Control (NGC2) prototype award](https://www.army.mil/article-amp/287180/army_announces_next_generation_command_and_control_ngc2_prototype_award)
+- CDAO acquisition approach: [Open DAGIR](https://www.ai.mil/Latest/News-Press/PR-View/Article/4026085/cdao-highlights-progress-in-scaling-data-and-ai-capabilities-at-six-month-mark/)
+- Army budget justification: [PB 2026 NGC2 Prototyping](https://www.asafm.army.mil/Portals/72/Documents/BudgetMaterial/2026/Discretionary%20Budget/rdte/RDTE%20-%20Vol%202%20-%20Budget%20Activity%204B.pdf)
+- CJADC2 technical requirement framing: [AI-/ML-based sensor fusion at the edge](https://militaryembedded.com/ai/machine-learning/cjadc2-interoperability-ai-ml-based-sensor-fusion-at-the-edge)
+
+See [AGENTS.md](AGENTS.md) and [CLAUDE.md](CLAUDE.md) for the full evaluator-facing handoff, thread-derived demo decisions, and Hawkeye / Palantir Foundry / CASK integration story.
+
 ## Local preview
 ```bash
 python3 -m http.server 8000

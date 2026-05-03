@@ -88,7 +88,7 @@ Now we simulate the failure that breaks centralized systems: the current coordin
 
 Most systems show resilience in software simulation. We built the failure moment in hardware, running live.
 
-Physically unplug Node 1 or kill it on screen.
+Trigger the Node 1 dropout over SSH or stop the node service on screen while the Pi bench stays powered.
 
 On screen, judges should see:
 
