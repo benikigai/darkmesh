@@ -1,0 +1,25 @@
+{"ts":"2026-05-03T18:44:22.514Z","cmd":"viewport","args":"1440x900","origin":"about:blank","durationMs":4,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:44:22.645Z","cmd":"goto","args":"http://127.0.0.1:8870/","origin":"http://127.0.0.1:8870/","durationMs":89,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:44:23.219Z","cmd":"wait","args":"--networkidle","origin":"http://127.0.0.1:8870/","durationMs":513,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:44:24.093Z","cmd":"screenshot","args":"/tmp/darkmesh-after-cc.png","origin":"http://127.0.0.1:8870/","durationMs":834,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:44:24.364Z","cmd":"screenshot","args":"/tmp/darkmesh-after-app-shell.png --selector .app-shell","origin":"http://127.0.0.1:8870/","durationMs":233,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:44:24.412Z","cmd":"console","args":"--errors","origin":"http://127.0.0.1:8870/","durationMs":2,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:45:00.371Z","cmd":"goto","args":"http://127.0.0.1:8871/","origin":"http://127.0.0.1:8871/","durationMs":21,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:45:00.978Z","cmd":"wait","args":"--networkidle","origin":"http://127.0.0.1:8871/","durationMs":515,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:45:01.020Z","cmd":"network","args":"","origin":"http://127.0.0.1:8871/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:45:59.737Z","cmd":"viewport","args":"1440x900","origin":"http://127.0.0.1:8871/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:45:59.790Z","cmd":"goto","args":"http://127.0.0.1:8872/","origin":"http://127.0.0.1:8872/","durationMs":12,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:46:00.365Z","cmd":"wait","args":"--networkidle","origin":"http://127.0.0.1:8872/","durationMs":501,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:46:01.223Z","cmd":"screenshot","args":"/tmp/darkmesh-final.png","origin":"http://127.0.0.1:8872/","durationMs":816,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:46:01.496Z","cmd":"screenshot","args":"/tmp/darkmesh-final-cc.png --selector .app-shell","origin":"http://127.0.0.1:8872/","durationMs":233,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:46:01.544Z","cmd":"console","args":"--errors","origin":"http://127.0.0.1:8872/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:47:35.377Z","cmd":"viewport","args":"1440x900","origin":"http://127.0.0.1:8872/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:47:35.438Z","cmd":"goto","args":"http://127.0.0.1:8873/","origin":"http://127.0.0.1:8873/","durationMs":15,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:47:36.029Z","cmd":"wait","args":"--networkidle","origin":"http://127.0.0.1:8873/","durationMs":497,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:47:36.908Z","cmd":"screenshot","args":"/tmp/darkmesh-final2.png","origin":"http://127.0.0.1:8873/","durationMs":839,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:47:37.172Z","cmd":"screenshot","args":"/tmp/darkmesh-final2-cc.png --selector .app-shell","origin":"http://127.0.0.1:8873/","durationMs":228,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:52:23.093Z","cmd":"viewport","args":"1440x900","origin":"http://127.0.0.1:8873/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:52:23.157Z","cmd":"goto","args":"http://127.0.0.1:8874/","origin":"http://127.0.0.1:8874/","durationMs":15,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:52:23.771Z","cmd":"wait","args":"--networkidle","origin":"http://127.0.0.1:8874/","durationMs":517,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:52:24.433Z","cmd":"screenshot","args":"/tmp/dm-home-fancy.png","origin":"http://127.0.0.1:8874/","durationMs":616,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-05-03T18:52:24.726Z","cmd":"screenshot","args":"/tmp/dm-home-fancy-cc.png --selector .app-shell","origin":"http://127.0.0.1:8874/","durationMs":247,"status":"ok","hasCookies":false,"mode":"launched"}
