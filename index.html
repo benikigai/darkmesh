@@ -80,81 +80,7 @@
 
     <div class="ambient-field" aria-hidden="true"></div>
 
-    <main class="site-frame">
-      <section class="hero-section" id="mission-brief" aria-label="DarkMesh mission brief">
-        <div class="hero-copy">
-          <p class="eyebrow">Live DDIL edge demo / Foundry + CASK + local mesh</p>
-          <h1 class="hero-title">DarkMesh</h1>
-          <p class="hero-lede">
-            Altiair deploys a decentralized sensor mesh, fuses weak field evidence into one human-reviewed cue, survives node loss, and syncs the mission record back to Foundry.
-          </p>
-          <div class="hero-actions" aria-label="Demo actions">
-            <button class="primary-action" type="button" data-scroll-target="live-demo">
-              <svg><use href="#icon-play"></use></svg>
-              Start live pass
-            </button>
-            <a class="secondary-action" href="#architecture">
-              <svg><use href="#icon-shield"></use></svg>
-              Architecture
-            </a>
-            <a class="secondary-action" href="#runtime-proof">
-              <svg><use href="#icon-cpu"></use></svg>
-              Live code
-            </a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-label="Demo flow preview">
-          <img src="./assets/pitch/demo-flow-chart.svg" alt="DarkMesh live demo flow from sensor ingest through Foundry synchronization">
-        </div>
-      </section>
-
-      <section class="narrative-section" aria-label="Mission narrative">
-        <div class="narrative-copy">
-          <p class="eyebrow">Scenario</p>
-          <h2>Find the useful cue without depending on one command node.</h2>
-          <p>
-            A drone-class event appears in a contested training area. One node has RFID and Wi-Fi proximity context, one has Hawkeye/vision, one has microphone context, and Foundry provides governed mission intelligence. DarkMesh turns those fragments into a policy-gated controller-zone cue for human review.
-          </p>
-        </div>
-        <div class="narrative-columns" aria-label="Mission ingredients">
-          <article>
-            <span>01</span>
-            <strong>Mission directive</strong>
-            <p>Foundry/Atlas context and operator intent become a CASK deployment order with leases for each edge node.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <strong>Distributed evidence</strong>
-            <p>Camera, microphone, RFID/provider-style proximity, and node health arrive as compact typed records instead of raw stream dependency.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <strong>Coordinator failover</strong>
-            <p>If the active coordinator drops, the replicated ledger and gossip state let a surviving node keep the mission picture alive.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <strong>Commander sync</strong>
-            <p>When a gateway is available, the evidence, decisions, policy gates, and coordinator terms reconcile back to Foundry.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="live-demo-section" id="live-demo" aria-label="Live DarkMesh demo">
-        <div class="stage-header">
-          <div>
-            <p class="eyebrow">Live mission pass</p>
-            <h2>Mission directive to edge coordination.</h2>
-          </div>
-          <div class="runtime-source" aria-label="Runtime source">
-            <span id="sourceMode">Detecting source</span>
-            <strong id="flowStatus">Waiting for CASK state</strong>
-          </div>
-        </div>
-
-        <div id="missionFlow" class="mission-flow" aria-label="Mission execution flow"></div>
-
-        <div class="app-shell" data-view="fusion">
+    <div class="app-shell" data-view="fusion">
       <header class="titlebar">
         <div class="titlebar-main">
           <div class="titlebar-top">
@@ -350,163 +276,91 @@
           <div id="evidenceMetrics" class="evidence-grid"></div>
         </article>
       </section>
-        </div>
-      </section>
+    </div>
 
-      <section class="bench-section" aria-label="Edge fleet bench setup running the live mesh">
-        <div class="bench-copy">
-          <p class="eyebrow">Live at the bench</p>
-          <h2>Running right now on a Jetson Nano, three Raspberry Pis, and an iPad chest computer.</h2>
-          <p>
-            The mesh isn't a slide. A four-node fleet — Jetson Orin Nano <code>altiair-orin</code>, Raspberry Pi 5 <code>altiair-hub</code>, and two Raspberry Pi 4B sensor peers <code>altiair-node-a</code> / <code>altiair-node-b</code> — sits at the team bench, joined to the local Altiair-LAN over Wi-Fi, running the same node API, Ollama-served Gemma 4 e2b inference, and CASK evidence-bundle pipeline. An iPad on a chest harness mirrors the operator console as a wearable EagleEye-style display. Foundry / CASK sync queues locally until any gateway gets an uplink. Pull power from any one node and the surviving peers keep the mission picture.
-          </p>
-          <ul class="bench-facts">
-            <li>
-              <strong>altiair-orin</strong>
-              Jetson Orin Nano · LAN host · USB mic · accelerated inference · secondary Foundry gateway
-            </li>
-            <li>
-              <strong>altiair-hub</strong>
-              Pi 5 · operator display · USB camera · local queue · preferred Foundry / CASK gateway
-            </li>
-            <li>
-              <strong>altiair-node-a / altiair-node-b</strong>
-              Pi 4B · edge sensors · RFID + provider-style location · replicated ledger
-            </li>
-            <li>
-              <strong>iPad chest computer</strong>
-              Wearable operator console · live mesh + cue overlay · EagleEye-style readout
-            </li>
-            <li>
-              <strong>Local LAN mesh on Wi-Fi</strong>
-              Altiair-LAN hosted on-site · no cloud, no internet path required
-            </li>
-            <li>
-              <strong>gemma4:e2b on-device</strong>
-              Ollama-served · ~50–60°C under sustained inference with active cooling
-            </li>
-            <li>
-              <strong>Survivable</strong>
-              Replicated ledger, gossip, and Raft-style coordinator across all four nodes
-            </li>
-          </ul>
-        </div>
-        <figure class="bench-visual">
-          <img src="./assets/hardware/darkmesh-pis.jpg" alt="Edge fleet at the team bench: Jetson Orin Nano, Raspberry Pi 5 hub, two Pi 4B sensor peers, and iPad chest-worn operator console, joined to local Altiair-LAN over Wi-Fi" />
-          <figcaption>Edge fleet at the bench — running the same code as the live demo above.</figcaption>
-        </figure>
-      </section>
-
-      <section class="proof-section" id="runtime-proof" aria-label="Runtime proof">
-        <div class="proof-copy">
-          <p class="eyebrow">Working code path</p>
-          <h2>The website walks through the running system.</h2>
-          <p>
-            The page reads the same node API that the Pi and Jetson nodes expose. During the live pass it shows each code path, endpoint poll, ledger update, coordinator term, local model result, node-dropout state, and Foundry writeback boundary as the mission advances.
-          </p>
-        </div>
-        <div class="runtime-workbench" aria-label="Live code execution workbench">
-          <div id="executionCounters" class="execution-counters" aria-label="Runtime counters"></div>
-          <div id="executionTimeline" class="execution-timeline" aria-label="Code path timeline"></div>
-          <div class="execution-console" aria-label="Execution feed">
-            <div class="console-topline">
-              <span>execution feed</span>
-              <strong>DarkMesh runtime</strong>
-            </div>
-            <div id="executionFeed" class="execution-feed"></div>
-          </div>
-          <div id="endpointGrid" class="endpoint-grid" aria-label="Endpoint polling state"></div>
-          <div id="runtimeProof" class="proof-grid" aria-label="Live runtime checks"></div>
-        </div>
-      </section>
-
-      <section class="architecture-section" id="architecture" aria-label="DarkMesh architecture">
-        <div class="architecture-copy">
-          <p class="eyebrow">System architecture</p>
-          <h2>Robust, safe, secure edge coordination.</h2>
-          <p>
-            Foundry and CASK shape the mission data. DarkMesh keeps the local runtime useful when the uplink or one node fails, while policy gates, signed records, encrypted payloads, and memory-safe durable components keep the demo on a production path.
-          </p>
-        </div>
-
-        <div class="uml-board" role="img" aria-label="UML-style architecture diagram for DarkMesh">
-          <div class="uml-lane lane-command">
-            <span class="lane-label">Command / Foundry</span>
-            <div class="uml-node">Operator website</div>
-            <div class="uml-arrow"></div>
-            <div class="uml-node">Foundry Atlas / OSDK</div>
-            <div class="uml-arrow"></div>
-            <div class="uml-node">CASK ontology</div>
-          </div>
-          <div class="uml-lane lane-edge">
-            <span class="lane-label">Edge runtime</span>
-            <div class="uml-node">Node API</div>
-            <div class="uml-arrow"></div>
-            <div class="uml-node">Replicated ledger</div>
-            <div class="uml-arrow"></div>
-            <div class="uml-node" id="archCoordinator">Elected coordinator</div>
-          </div>
-          <div class="uml-lane lane-sensors">
-            <span class="lane-label">Sensors / models</span>
-            <div class="uml-node">RFID + Wi-Fi proximity</div>
-            <div class="uml-node">Hawkeye / camera</div>
-            <div class="uml-node">Microphone context</div>
-            <div class="uml-node">Local Gemma/Ollama insight</div>
-          </div>
-          <div class="uml-lane lane-safety">
-            <span class="lane-label">Safety / security</span>
-            <div class="uml-node" id="archSecurity">Policy gate</div>
-            <div class="uml-node">AES-256-GCM envelopes</div>
-            <div class="uml-node">Ed25519 signed records</div>
-            <div class="uml-node">Rust durable agent</div>
-          </div>
-          <div class="uml-outcome">
-            <strong id="archSync">Foundry sync queued until gateway is available</strong>
-            <span>Human-reviewed cue, source citations, node-health state, coordinator term, and after-action record.</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="team-section" aria-label="Altiair team">
-        <header class="team-header">
-          <p class="eyebrow">Team</p>
-          <h2>Built by Altiair.</h2>
-          <p>Four engineers, twenty-four hours, one DDIL mission stack.</p>
-        </header>
-
-        <figure class="team-photo">
-          <img src="./assets/hardware/darkmesh-team.jpg" alt="Team Altiair at NatSec Hackathon 2026, Shack15 SF" />
-          <figcaption>NatSec Hackathon 2026 · Shack15, San Francisco</figcaption>
-        </figure>
-
-        <div class="team-grid">
-          <a class="team-card" href="https://github.com/valencealignment" rel="noopener" target="_blank">
-            <strong>Sarah Hatcher</strong>
-            <span>@valencealignment</span>
-          </a>
-          <a class="team-card" href="https://github.com/benikigai" rel="noopener" target="_blank">
-            <strong>Benjamin Shyong</strong>
-            <span>@benikigai</span>
-          </a>
-          <a class="team-card" href="https://github.com/digitalnomd" rel="noopener" target="_blank">
-            <strong>Rob Grossman</strong>
-            <span>@digitalnomd</span>
-          </a>
-          <a class="team-card" href="https://github.com/StellarLuminosity" rel="noopener" target="_blank">
-            <strong>Katherine Lambert</strong>
-            <span>@StellarLuminosity</span>
-          </a>
-        </div>
-
-        <p class="team-repo-note">
-          Source &middot;
-          <a href="https://github.com/digitalnomd/altiair" rel="noopener" target="_blank">github.com/digitalnomd/altiair</a>
-          &nbsp;&nbsp;·&nbsp;&nbsp;
-          Site &middot;
-          <a href="https://github.com/benikigai/darkmesh" rel="noopener" target="_blank">github.com/benikigai/darkmesh</a>
+    <section class="bench-section" aria-label="Edge fleet bench setup running the live mesh">
+      <div class="bench-copy">
+        <p class="eyebrow">Live at the bench</p>
+        <h2>Running right now on a Jetson Nano, three Raspberry Pis, and an iPad chest computer.</h2>
+        <p>
+          The mesh isn't a slide. A four-node fleet — Jetson Orin Nano <code>altiair-orin</code>, Raspberry Pi 5 <code>altiair-hub</code>, and two Raspberry Pi 4B sensor peers <code>altiair-node-a</code> / <code>altiair-node-b</code> — sits at the team bench, joined to the local Altiair-LAN over Wi-Fi, running the same node API, Ollama-served Gemma 4 e2b inference, and CASK evidence-bundle pipeline. An iPad on a chest harness mirrors the operator console as a wearable EagleEye-style display. Foundry / CASK sync queues locally until any gateway gets an uplink. Pull power from any one node and the surviving peers keep the mission picture.
         </p>
-      </section>
-    </main>
+        <ul class="bench-facts">
+          <li>
+            <strong>altiair-orin</strong>
+            Jetson Orin Nano · LAN host · USB mic · accelerated inference · secondary Foundry gateway
+          </li>
+          <li>
+            <strong>altiair-hub</strong>
+            Pi 5 · operator display · USB camera · local queue · preferred Foundry / CASK gateway
+          </li>
+          <li>
+            <strong>altiair-node-a / altiair-node-b</strong>
+            Pi 4B · edge sensors · RFID + provider-style location · replicated ledger
+          </li>
+          <li>
+            <strong>iPad chest computer</strong>
+            Wearable operator console · live mesh + cue overlay · EagleEye-style readout
+          </li>
+          <li>
+            <strong>Local LAN mesh on Wi-Fi</strong>
+            Altiair-LAN hosted on-site · no cloud, no internet path required
+          </li>
+          <li>
+            <strong>gemma4:e2b on-device</strong>
+            Ollama-served · ~50–60°C under sustained inference with active cooling
+          </li>
+          <li>
+            <strong>Survivable</strong>
+            Replicated ledger, gossip, and Raft-style coordinator across all four nodes
+          </li>
+        </ul>
+      </div>
+      <figure class="bench-visual">
+        <img src="./assets/hardware/darkmesh-pis.jpg" alt="Edge fleet at the team bench: Jetson Orin Nano, Raspberry Pi 5 hub, two Pi 4B sensor peers, and iPad chest-worn operator console, joined to local Altiair-LAN over Wi-Fi" />
+        <figcaption>Edge fleet at the bench — running the same code as the dashboard above.</figcaption>
+      </figure>
+    </section>
+
+    <section class="team-section" aria-label="Altiair team">
+      <header class="team-header">
+        <p class="eyebrow">Team</p>
+        <h2>Built by Altiair.</h2>
+        <p>Four engineers, twenty-four hours, one DDIL mission stack.</p>
+      </header>
+
+      <figure class="team-photo">
+        <img src="./screenshots/darkmesh-team.jpg" alt="Team Altiair at NatSec Hackathon 2026, Shack15 SF" />
+        <figcaption>NatSec Hackathon 2026 · Shack15, San Francisco</figcaption>
+      </figure>
+
+      <div class="team-grid">
+        <a class="team-card" href="https://github.com/valencealignment" rel="noopener" target="_blank">
+          <strong>Sarah Hatcher</strong>
+          <span>@valencealignment</span>
+        </a>
+        <a class="team-card" href="https://github.com/benikigai" rel="noopener" target="_blank">
+          <strong>Benjamin Shyong</strong>
+          <span>@benikigai</span>
+        </a>
+        <a class="team-card" href="https://github.com/digitalnomd" rel="noopener" target="_blank">
+          <strong>Rob Grossman</strong>
+          <span>@digitalnomd</span>
+        </a>
+        <a class="team-card" href="https://github.com/StellarLuminosity" rel="noopener" target="_blank">
+          <strong>Katherine Lambert</strong>
+          <span>@StellarLuminosity</span>
+        </a>
+      </div>
+
+      <p class="team-repo-note">
+        Source &middot;
+        <a href="https://github.com/digitalnomd/altiair" rel="noopener" target="_blank">github.com/digitalnomd/altiair</a>
+        &nbsp;&nbsp;·&nbsp;&nbsp;
+        Site &middot;
+        <a href="https://github.com/benikigai/darkmesh" rel="noopener" target="_blank">github.com/benikigai/darkmesh</a>
+      </p>
+    </section>
 
     <script type="module" src="./app.js"></script>
   </body>

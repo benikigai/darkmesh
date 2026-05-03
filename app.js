@@ -4,86 +4,16 @@ const MAP_HEIGHT = 390;
 const TILE_SIZE = 256;
 const DEFAULT_REFRESH_MS = 5000;
 
-const missionFlowModel = [
-  { id: "directive", label: "Mission directive", proof: "/mission/deploy" },
-  { id: "foundry", label: "Foundry intelligence", proof: "/foundry/intelligence" },
-  { id: "cask", label: "CASK deployment", proof: "/mission/deployment/latest" },
-  { id: "leases", label: "Node leases", proof: "/mission/timeline" },
-  { id: "sensors", label: "Sensor fan-in", proof: "POST /sensor-events" },
-  { id: "fusion", label: "Local LLM fusion", proof: "/insights/latest" },
-  { id: "failover", label: "Coordinator failover", proof: "/coordinator/latest" },
-  { id: "sync", label: "Foundry writeback", proof: "/foundry/sync/latest" },
-];
-
-const executionModel = [
-  {
-    id: "bootstrap",
-    label: "Boot demo",
-    file: "scripts/demo-start.sh",
-    endpoint: "npm run demo:start",
-    event: "launcher starts node API, UI proxy, fixture/live adapters",
-  },
-  {
-    id: "mission",
-    label: "Deploy mission",
-    file: "src/cask/missionDeployment.ts",
-    endpoint: "POST /mission/deploy",
-    event: "mission directive becomes CASK policy, timeline, and leases",
-  },
-  {
-    id: "ingest",
-    label: "Ingest sensors",
-    file: "src/sensors/liveMerge.ts",
-    endpoint: "POST /sensor-events",
-    event: "camera, microphone, RFID, and node health normalize into evidence",
-  },
-  {
-    id: "ledger",
-    label: "Replicate ledger",
-    file: "src/mesh/replication.ts",
-    endpoint: "GET /ledger",
-    event: "compact signed CASK records replicate across surviving nodes",
-  },
-  {
-    id: "model",
-    label: "Run local model",
-    file: "src/llm/localInsight.ts",
-    endpoint: "GET /insights/latest",
-    event: "local Gemma/Ollama path drafts the explainable cue",
-  },
-  {
-    id: "coordinator",
-    label: "Coordinate nodes",
-    file: "src/mesh/coordinator.ts",
-    endpoint: "GET /coordinator/latest",
-    event: "current-term coordinator publishes per-node instructions",
-  },
-  {
-    id: "failover",
-    label: "Drop a node",
-    file: "src/scripts/demo-bootstrap.ts",
-    endpoint: "failure-step",
-    event: "node loss updates gossip while the mission picture survives",
-  },
-  {
-    id: "foundry",
-    label: "Sync record",
-    file: "src/foundry/uploader.ts",
-    endpoint: "GET /foundry/sync/latest",
-    event: "accepted or queued CASK record returns to Foundry boundary",
-  },
-];
-
 const fallbackState = {
   updatedAt: "2026-05-02T19:35:00-07:00",
   mission: {
-    name: "Counter-UAS cueing / operator-zone review",
+    name: "Locate aerial anomaly",
     status: "5/6 nodes active - mesh stable",
   },
   fusion: {
     confidenceLabel: "High",
     confidenceScore: 0.87,
-    latestEvent: "Drone-class cue crossing northwest approach",
+    latestEvent: "UAS track crossing northwest approach",
     eventLabel: "UAS Track",
     position: { x: 39.3, y: 15.2, latitude: 37.79125, longitude: -122.40355 },
     trackTrail: [
@@ -102,7 +32,7 @@ const fallbackState = {
       ],
     ],
     controlSource: {
-      label: "Probable controller-associated zone",
+      label: "Probable UAS Control Source",
       confidenceLabel: "Medium",
       coordinates: { latitude: 37.78928, longitude: -122.39795 },
       radiusMeters: 115,
@@ -127,11 +57,11 @@ const fallbackState = {
     instructions: {
       "altiair-hub": "Hold bearing 308\u00b0, maintain visual lock",
       "altiair-orin": "Move to grid 37.79N \u2014 flank east 200m",
-      "altiair-node-a": "Cross-check treeline bearing 180-220\u00b0 for controller-zone cue",
+      "altiair-node-a": "Scan treeline bearing 180-220\u00b0 for operator",
       "altiair-node-b": "Relay position, hold current station",
     },
     recommendedNextAction: "Node 2 shift east and verify visual",
-    operatorNextAction: "Maintain observation. Keep cue in frame. Move only if safe.",
+    operatorNextAction: "Maintain observation. Keep object in frame. Move only if safe.",
     feed: [
       { level: "info", title: "Coordinator", text: "Hold current observation while Node 2 repositions." },
       { level: "good", title: "Deconfliction", text: "Node 1 observes; Node 3 relays; Node 4 verifies RF." },
@@ -279,24 +209,10 @@ const elements = {
   failoverState: document.querySelector("#failoverState"),
   lastHandoff: document.querySelector("#lastHandoff"),
   cueChain: document.querySelector("#cueChain"),
-  missionFlow: document.querySelector("#missionFlow"),
-  runtimeProof: document.querySelector("#runtimeProof"),
-  executionTimeline: document.querySelector("#executionTimeline"),
-  executionFeed: document.querySelector("#executionFeed"),
-  executionCounters: document.querySelector("#executionCounters"),
-  endpointGrid: document.querySelector("#endpointGrid"),
-  sourceMode: document.querySelector("#sourceMode"),
-  flowStatus: document.querySelector("#flowStatus"),
-  archCoordinator: document.querySelector("#archCoordinator"),
-  archSecurity: document.querySelector("#archSecurity"),
-  archSync: document.querySelector("#archSync"),
-  scrollTargets: document.querySelectorAll("[data-scroll-target]"),
 };
 
 const app = {
   timer: null,
-  executionTimer: null,
-  executionTick: 0,
   viewMode: "fusion",
   currentState: null,
 };
@@ -307,26 +223,9 @@ for (const button of elements.viewModeButtons) {
   });
 }
 
-for (const trigger of elements.scrollTargets) {
-  trigger.addEventListener("click", () => {
-    app.executionTick = 0;
-    const target = document.getElementById(trigger.dataset.scrollTarget ?? "");
-    target?.scrollIntoView({ behavior: "smooth", block: "start" });
-    if (app.currentState) {
-      renderRuntimeExecution(app.currentState);
-    }
-  });
-}
-
 setViewMode(app.viewMode);
 updateClock();
 window.setInterval(updateClock, 1000);
-app.executionTimer = window.setInterval(() => {
-  app.executionTick += 1;
-  if (app.currentState) {
-    renderRuntimeExecution(app.currentState);
-  }
-}, 1400);
 window.addEventListener("resize", () => {
   if (!app.currentState) {
     return;
@@ -339,25 +238,21 @@ async function refreshDashboard() {
   window.clearTimeout(app.timer);
 
   let state = fallbackState;
-  let runtimeSource = "Embedded demo fixture";
 
   try {
     const livePayload = await loadLivePayload();
     if (livePayload !== null) {
       state = normalizeState(livePayload);
-      runtimeSource = "Live node API";
     } else {
       const fixture = await loadFixtureState();
       if (fixture !== null) {
         state = normalizeState(fixture);
-        runtimeSource = "Sanitized fixture";
       }
     }
   } catch (caught) {
     console.warn("Dashboard refresh fell back to demo state.", caught);
   }
 
-  state.runtimeSource = runtimeSource;
   renderDashboard(state);
   scheduleRefresh();
 }
@@ -596,12 +491,6 @@ function fromNodeApiSnapshot(snapshot) {
     null;
 
   base.updatedAt = snapshot.capturedAt ?? new Date().toISOString();
-  base.runtime = {
-    pendingBundles: pendingBundles.length,
-    ledgerRecordCount: snapshot.ledger?.storedRecordCount ?? snapshot.ledger?.recordCount ?? null,
-    streamRecordCount: snapshot.stream?.recordCount ?? snapshot.stream?.records?.length ?? null,
-    endpointCount: Object.values(snapshot).filter((value) => value !== null && value !== undefined).length,
-  };
   base.foundryIntelligence = foundryIntelligence;
   base.deploymentOrder = deploymentOrder;
   base.mission.name = missionInstruction?.title ?? deploymentOrder?.title ?? base.mission.name;
@@ -1038,7 +927,7 @@ function geoDeploymentFromPayload(payload) {
   const controlSource = controlSourceCoordinate
     ? {
         ...(isPlainObject(payload.controlSource) ? payload.controlSource : {}),
-        label: stringValue(payload.controlSource?.label) ?? "Probable controller-associated zone",
+        label: stringValue(payload.controlSource?.label) ?? "Probable UAS Control Source",
         coordinates: controlSourceCoordinate,
         radiusMeters: numberValue(payload.controlSource?.radiusMeters ?? payload.controlSourceEstimate?.confidenceRingMeters) ?? 115,
       }
@@ -1285,7 +1174,6 @@ function renderBaseMap(geoContext, dimensions) {
       image.decoding = "async";
       image.loading = "lazy";
       image.referrerPolicy = "no-referrer";
-      image.addEventListener("error", () => image.remove(), { once: true });
       image.src = tileUrl(template, zoom, wrappedX, tileY);
       image.style.left = `${(((tileX * TILE_SIZE) - topLeft.x) / dimensions.width) * 100}%`;
       image.style.top = `${(((tileY * TILE_SIZE) - topLeft.y) / dimensions.height) * 100}%`;
@@ -1372,7 +1260,6 @@ function renderDashboard(state) {
   renderNodeOrders(state);
   renderEvidence(state.fusion.evidence);
   renderCueChain(state, confidenceScore);
-  renderMissionNarrative(state, readinessScore, confidenceScore);
 }
 
 function renderMap(state, dimensions) {
@@ -1806,243 +1693,11 @@ function renderCueChain(state, confidenceScore) {
   }));
 }
 
-function renderMissionNarrative(state, readinessScore, confidenceScore) {
-  if (!elements.missionFlow || !elements.runtimeProof) {
-    return;
-  }
-
-  const activeNodes = state.gossip.nodes.filter((node) => node.status !== "degraded").length;
-  const degradedNodes = state.gossip.nodes.filter((node) => node.status === "degraded");
-  const deploymentState = state.deploymentOrder?.state ?? "active";
-  const foundryConnected = state.foundryIntelligence?.connected === true;
-  const foundrySyncStatus = state.foundrySync?.ack?.status ?? (foundryConnected ? "ready" : "queued");
-  const leader = state.coordinator.leaderId ? nodeLabel(state.coordinator.leaderId) : "observe-only";
-  const policy = state.fusion.policyGate ?? "review_needed";
-
-  elements.sourceMode.textContent = state.runtimeSource ?? "Demo fixture";
-  elements.flowStatus.textContent = `${readinessScore}% ready / ${activeNodes} active nodes / ${formatPolicy(policy)}`;
-  elements.archCoordinator.textContent = `Elected coordinator: ${leader}`;
-  elements.archSecurity.textContent = `Policy gate: ${formatPolicy(policy)}`;
-  elements.archSync.textContent = foundrySyncStatus === "accepted"
-    ? "Foundry sync accepted"
-    : foundryConnected
-      ? "Foundry gateway ready for commander sync"
-      : "Foundry sync queued until gateway is available";
-
-  const flowState = {
-    directive: {
-      status: deploymentState === "blocked" ? "Blocked" : "Loaded",
-      detail: state.mission.name,
-      className: deploymentState === "blocked" ? "is-blocked" : "is-live",
-    },
-    foundry: {
-      status: foundryConnected ? "Connected" : "Cached/mock",
-      detail: foundryConnected ? "Governed Atlas context is live." : "Runs from cached or fixture context.",
-      className: foundryConnected ? "is-live" : "is-warning",
-    },
-    cask: {
-      status: formatToken(deploymentState),
-      detail: `${formatPolicy(policy)} with typed mission records.`,
-      className: deploymentState === "blocked" ? "is-blocked" : "is-live",
-    },
-    leases: {
-      status: `${state.gossip.nodes.length} nodes`,
-      detail: `${activeNodes} active, ${degradedNodes.length} degraded or reserved.`,
-      className: degradedNodes.length ? "is-warning" : "is-live",
-    },
-    sensors: {
-      status: `${state.fusion.evidence.length} lanes`,
-      detail: evidenceSummary(state.fusion.evidence),
-      className: "is-live",
-    },
-    fusion: {
-      status: `${confidenceScore}% confidence`,
-      detail: state.fusion.latestEvent,
-      className: confidenceScore >= 75 ? "is-live" : "is-warning",
-    },
-    failover: {
-      status: state.coordinator.authorityState === "no_quorum_observe_only" ? "Observe-only" : "Armed",
-      detail: degradedNodes.length
-        ? `${leader} preserves mission state after node loss.`
-        : `${leader} is current-term coordinator.`,
-      className: degradedNodes.length ? "is-warning" : "is-live",
-    },
-    sync: {
-      status: formatToken(foundrySyncStatus),
-      detail: foundrySyncStatus === "accepted"
-        ? "Commander visibility has an accepted receipt."
-        : "CASK records stay queued for Foundry reconciliation.",
-      className: foundrySyncStatus === "accepted" || foundryConnected ? "is-live" : "is-warning",
-    },
-  };
-
-  elements.missionFlow.replaceChildren(...missionFlowModel.map((item, index) => {
-    const model = flowState[item.id];
-    const node = document.createElement("article");
-    node.className = `flow-step ${model.className}`;
-    node.style.setProperty("--delay", `${index * 55}ms`);
-    node.innerHTML = "<span></span><strong></strong><p></p>";
-    node.querySelector("span").textContent = `${String(index + 1).padStart(2, "0")} / ${model.status}`;
-    node.querySelector("strong").textContent = item.label;
-    node.querySelector("p").textContent = model.detail;
-    node.title = item.proof;
-    return node;
-  }));
-
-  const proofItems = [
-    {
-      label: "One-command launcher",
-      title: state.runtimeSource === "Live node API" ? "Running from node API" : "Vercel/static fallback ready",
-      code: "npm run demo:start -- --include-failure-step",
-    },
-    {
-      label: "Mission contract",
-      title: `${formatPolicy(policy)} / ${deploymentState}`,
-      code: "POST /mission/deploy -> GET /mission/deployment/latest",
-    },
-    {
-      label: "Sensor ingest",
-      title: evidenceSummary(state.fusion.evidence),
-      code: "POST /sensor-events -> CASK bundle -> /dashboard",
-    },
-    {
-      label: "Local model",
-      title: "Gemma/Ollama path or deterministic mock",
-      code: "GET /insights/latest -> cited local explanation",
-    },
-    {
-      label: "Coordinator",
-      title: `${leader} / ${formatToken(state.coordinator.authorityState ?? "leader_active")}`,
-      code: "GET /gossip/world -> GET /coordinator/latest",
-    },
-    {
-      label: "Foundry return",
-      title: formatToken(foundrySyncStatus),
-      code: "POST /foundry/upload -> GET /foundry/sync/latest",
-    },
-  ];
-
-  elements.runtimeProof.replaceChildren(...proofItems.map((item) => {
-    const row = document.createElement("article");
-    row.className = "proof-item";
-    row.innerHTML = "<span></span><strong></strong><code></code>";
-    row.querySelector("span").textContent = item.label;
-    row.querySelector("strong").textContent = item.title;
-    row.querySelector("code").textContent = item.code;
-    return row;
-  }));
-
-  renderRuntimeExecution(state);
-}
-
-function renderRuntimeExecution(state) {
-  if (!elements.executionTimeline || !elements.executionFeed || !elements.endpointGrid || !elements.executionCounters) {
-    return;
-  }
-
-  const activeIndex = app.executionTick % executionModel.length;
-  const runtimeMode = state.runtimeSource === "Live node API" ? "live API" : "fixture replay";
-  const leader = nodeLabel(state.coordinator.leaderId ?? "altiair-hub");
-  const policy = formatPolicy(state.fusion.policyGate ?? "review_needed");
-  const foundrySyncStatus = state.foundrySync?.ack?.status ??
-    state.foundrySync?.status ??
-    (state.foundryIntelligence?.connected ? "accepted" : "queued");
-  const pendingBundles = state.runtime?.pendingBundles ?? Math.max(1, 3 + (app.executionTick % 5));
-  const ledgerRecords = state.runtime?.ledgerRecordCount ?? (48 + app.executionTick * 2);
-  const streamRecords = state.runtime?.streamRecordCount ?? (60 + app.executionTick * 3);
-  const endpointCount = state.runtime?.endpointCount ?? (state.runtimeSource === "Live node API" ? 18 : 1);
-
-  elements.executionTimeline.replaceChildren(...executionModel.map((step, index) => {
-    const node = document.createElement("article");
-    node.className = [
-      "execution-step",
-      index === activeIndex ? "is-active" : "",
-      index < activeIndex ? "is-complete" : "",
-    ].filter(Boolean).join(" ");
-    node.innerHTML = "<span></span><strong></strong><code></code><p></p>";
-    node.querySelector("span").textContent = String(index + 1).padStart(2, "0");
-    node.querySelector("strong").textContent = step.label;
-    node.querySelector("code").textContent = step.endpoint;
-    node.querySelector("p").textContent = step.file;
-    return node;
-  }));
-
-  const feedRows = executionModel.map((step, index) => {
-    const secondsAgo = Math.max(0, activeIndex - index);
-    const stamp = secondsAgo === 0 ? "now" : `-${secondsAgo * 2}s`;
-    return {
-      level: index === activeIndex ? "active" : index < activeIndex ? "done" : "pending",
-      text: `[${stamp}] ${step.endpoint} :: ${step.event}`,
-    };
-  }).slice(Math.max(0, activeIndex - 4), activeIndex + 3);
-
-  elements.executionFeed.replaceChildren(...feedRows.map((row) => {
-    const line = document.createElement("div");
-    line.className = `execution-feed-row is-${row.level}`;
-    line.innerHTML = "<span></span><code></code>";
-    line.querySelector("span").textContent = row.level;
-    line.querySelector("code").textContent = row.text;
-    return line;
-  }));
-
-  const counters = [
-    { label: "Runtime", value: runtimeMode },
-    { label: "Endpoints", value: `${endpointCount} polled` },
-    { label: "Ledger", value: `${ledgerRecords} records` },
-    { label: "Stream", value: `${streamRecords} records` },
-    { label: "Bundles", value: `${pendingBundles} queued/live` },
-    { label: "Coordinator", value: leader },
-    { label: "Policy", value: policy },
-    { label: "Foundry", value: formatToken(foundrySyncStatus) },
-  ];
-
-  elements.executionCounters.replaceChildren(...counters.map((item) => {
-    const node = document.createElement("article");
-    node.className = "execution-counter";
-    node.innerHTML = "<span></span><strong></strong>";
-    node.querySelector("span").textContent = item.label;
-    node.querySelector("strong").textContent = item.value;
-    return node;
-  }));
-
-  const endpointRows = [
-    "/health",
-    "/dashboard",
-    "/mission/deployment/latest",
-    "/sensor-events",
-    "/ledger",
-    "/replication/latest",
-    "/insights/latest",
-    "/coordinator/latest",
-    "/foundry/sync/latest",
-  ];
-
-  elements.endpointGrid.replaceChildren(...endpointRows.map((endpoint, index) => {
-    const row = document.createElement("article");
-    const active = index === activeIndex || endpoint === executionModel[activeIndex]?.endpoint;
-    row.className = `endpoint-row ${active ? "is-active" : ""}`;
-    row.innerHTML = "<span></span><strong></strong><code></code>";
-    row.querySelector("span").textContent = active ? "polling" : "ready";
-    row.querySelector("strong").textContent = state.runtimeSource === "Live node API" ? "live" : "fixture";
-    row.querySelector("code").textContent = endpoint;
-    return row;
-  }));
-}
-
-function evidenceSummary(metrics) {
-  const ranked = [...metrics]
-    .filter((metric) => metric.kind !== "agreement")
-    .sort((a, b) => (b.value ?? 0) - (a.value ?? 0))
-    .slice(0, 3)
-    .map((metric) => `${metric.label} ${metric.value ?? 0}%`);
-  return ranked.length ? ranked.join(" / ") : "Waiting for sensor evidence.";
-}
-
 function defaultNodeOrders() {
   return [
     { shortId: "N1", nodeId: "altiair-hub", text: "Hold bearing 308\u00b0, maintain visual lock" },
     { shortId: "N2", nodeId: "altiair-orin", text: "Move to grid 37.79N \u2014 flank east 200m" },
-    { shortId: "N3", nodeId: "altiair-node-a", text: "Cross-check treeline bearing 180-220\u00b0 for controller-zone cue" },
+    { shortId: "N3", nodeId: "altiair-node-a", text: "Scan treeline bearing 180-220\u00b0 for operator" },
     { shortId: "N5", nodeId: "altiair-node-b", text: "Relay position, hold current station" },
   ];
 }
