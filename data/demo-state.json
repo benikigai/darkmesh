@@ -74,13 +74,13 @@
             { "latitude": 37.7897, "longitude": -122.3992 }
           ],
           "controlSource": {
-            "label": "Probable UAS Control Source",
+            "label": "Probable controller-associated zone",
             "latitude": 37.78928,
             "longitude": -122.39795,
             "radiusMeters": 115
           },
           "eventLabel": "UAS Track",
-          "latestEvent": "UAS track crossing northwest approach"
+          "latestEvent": "Drone-class cue crossing northwest approach"
         }
       }
     ],
@@ -88,13 +88,13 @@
     "recommendedLocalUses": ["Use the governed GPS object to align local mesh observations against the map overlay."]
   },
   "mission": {
-    "name": "Locate aerial anomaly",
+    "name": "Counter-UAS cueing / operator-zone review",
     "status": "5/6 nodes active - mesh stable"
   },
   "fusion": {
     "confidenceLabel": "High",
     "confidenceScore": 0.87,
-    "latestEvent": "UAS track crossing northwest approach",
+    "latestEvent": "Drone-class cue crossing northwest approach",
     "eventLabel": "UAS Track",
     "position": { "x": 39.3, "y": 15.2, "latitude": 37.79125, "longitude": -122.40355 },
     "trackTrail": [
@@ -113,7 +113,7 @@
       ]
     ],
     "controlSource": {
-      "label": "Probable UAS Control Source",
+      "label": "Probable controller-associated zone",
       "confidenceLabel": "Medium",
       "coordinates": { "latitude": 37.78928, "longitude": -122.39795 },
       "radiusMeters": 115
@@ -169,7 +169,7 @@
   },
   "coordinator": {
     "recommendedNextAction": "Node 2 shift east and verify visual",
-    "operatorNextAction": "Maintain observation. Keep object in frame. Move only if safe.",
+    "operatorNextAction": "Maintain observation. Keep cue in frame. Move only if safe.",
     "feed": [
       {
         "level": "info",
