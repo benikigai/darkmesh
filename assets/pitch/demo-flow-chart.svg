@@ -1,164 +1,165 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980" role="img" aria-labelledby="title desc">
-  <title id="title">darkmesh demo flow chart</title>
-  <desc id="desc">One-command demo startup, sensor ingest, local edge filtering, replicated mesh fusion, human review, node failure recovery, and Foundry sync.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Darkmesh product flow chart</title>
+  <desc id="desc">A squad-level edge intelligence mesh where each soldier carries an edge device, devices share evidence in a ring, local fusion produces human-review cues, Anduril Hawkeye or EagleEye can act as a sensor feed, and a gateway syncs with Palantir Foundry when connected.</desc>
   <defs>
     <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-      <path d="M2,2 L10,6 L2,10 Z" fill="#263238"/>
+      <path d="M2,2 L10,6 L2,10 Z" fill="#c0cad5"/>
+    </marker>
+    <marker id="softArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#9aa8b7"/>
     </marker>
     <style>
-      .bg { fill: #f6f7f2; }
-      .title { font: 700 34px Arial, Helvetica, sans-serif; fill: #14212b; }
-      .subtitle { font: 18px Arial, Helvetica, sans-serif; fill: #3b4850; }
-      .box { fill: #ffffff; stroke: #263238; stroke-width: 2; rx: 10; }
-      .cmd { fill: #e7f0ff; stroke: #1f4b7a; stroke-width: 2; rx: 10; }
-      .sensor { fill: #fff7de; stroke: #775800; stroke-width: 2; rx: 10; }
-      .mesh { fill: #e9f6ec; stroke: #2f6b3f; stroke-width: 2; rx: 10; }
-      .review { fill: #f0e9ff; stroke: #4b347a; stroke-width: 2; rx: 10; }
-      .decision { fill: #ffffff; stroke: #263238; stroke-width: 2; }
-      .fail { fill: #ffe9e7; stroke: #9d302a; stroke-width: 2; rx: 10; }
-      .text { font: 700 17px Arial, Helvetica, sans-serif; fill: #14212b; }
-      .small { font: 14px Arial, Helvetica, sans-serif; fill: #39464f; }
-      .label { font: 13px Arial, Helvetica, sans-serif; fill: #39464f; }
-      .line { stroke: #263238; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
-      .dash { stroke: #6f7a82; stroke-width: 2.4; stroke-dasharray: 7 7; fill: none; marker-end: url(#arrow); }
-      .band { fill: #eef1ea; stroke: #c8cfc3; stroke-width: 1; rx: 12; }
+      .bg { fill: #000000; }
+      .title { font: 400 44px Nasalization, "Arial Rounded MT Bold", "Eurostile Extended", Orbitron, Michroma, Futura, Arial, sans-serif; fill: #2f7d5b; letter-spacing: 4px; }
+      .subtitle { font: 18px Arial, Helvetica, sans-serif; fill: #b8c4cf; }
+      .section { font: 700 16px Arial, Helvetica, sans-serif; fill: #d6dee7; text-transform: uppercase; }
+      .box { fill: #1c2631; stroke: #657383; stroke-width: 2; rx: 12; }
+      .soldier { fill: #1b2734; stroke: #8fa2b7; stroke-width: 2.2; rx: 14; }
+      .device { fill: #27384a; stroke: #9fb3c8; stroke-width: 2.2; rx: 12; }
+      .mesh { fill: #162535; stroke: #5d7894; stroke-width: 2.2; rx: 12; }
+      .review { fill: #20242b; stroke: #8a97a6; stroke-width: 2.2; rx: 12; }
+      .cloud { fill: #171b21; stroke: #9aa5b1; stroke-width: 2.2; rx: 14; }
+      .warn { fill: #252b33; stroke: #aab5c2; stroke-width: 2.2; rx: 12; }
+      .badge { fill: #05080c; stroke: #66727e; stroke-width: 1; rx: 8; }
+      .badgeAlt { fill: #0b1320; stroke: #8fa2b7; stroke-width: 1; rx: 8; }
+      .badgePi { fill: #232a33; stroke: #9aa5b1; stroke-width: 1; rx: 8; }
+      .badgeJetson { fill: #1a232d; stroke: #9aa5b1; stroke-width: 1; rx: 8; }
+      .badgeAnduril { fill: #12161c; stroke: #9aa5b1; stroke-width: 1; rx: 8; }
+      .badgeText { font: 700 14px Arial, Helvetica, sans-serif; fill: #f5f7fa; }
+      .text { font: 700 18px Arial, Helvetica, sans-serif; fill: #f5f7fa; }
+      .small { font: 14px Arial, Helvetica, sans-serif; fill: #c7d1dc; }
+      .tiny { font: 12px Arial, Helvetica, sans-serif; fill: #aeb9c5; }
+      .linkLabel { font: 700 12px Arial, Helvetica, sans-serif; fill: #c7d1dc; }
+      .line { stroke: #c0cad5; stroke-width: 2.6; fill: none; marker-end: url(#arrow); }
+      .greenLine { stroke: #9fb3c8; stroke-width: 2.8; fill: none; marker-end: url(#arrow); }
+      .greenDash { stroke: #8b98a6; stroke-width: 2.4; stroke-dasharray: 8 8; fill: none; marker-end: url(#softArrow); }
+      .ring { stroke: #87a9ca; stroke-width: 3.2; fill: none; marker-end: url(#arrow); }
+      .soft { stroke: #9aa8b7; stroke-width: 2.3; fill: none; marker-end: url(#softArrow); }
+      .dash { stroke: #8b98a6; stroke-width: 2.4; stroke-dasharray: 8 8; fill: none; marker-end: url(#softArrow); }
+      .ringArea { fill: #141f2a; stroke: #344657; stroke-width: 1.5; rx: 24; }
+      .legend { fill: #171b21; stroke: #566474; stroke-width: 1.5; rx: 10; }
     </style>
   </defs>
 
-  <rect class="bg" width="1400" height="980"/>
-  <text x="70" y="70" class="title">darkmesh Demo Flow</text>
-  <text x="70" y="104" class="subtitle">From one-command startup to edge fusion, node-loss resilience, and Foundry/CASK reconciliation.</text>
+  <rect class="bg" width="1500" height="1000"/>
+  <text x="70" y="78" class="title">ALTIER'S DARKMESH</text>
+  <text x="70" y="108" class="subtitle">Soldier-carried edge devices gather local signals, share compact evidence in a resilient ring, and sync with Foundry when a secure link exists.</text>
 
-  <rect x="55" y="135" width="300" height="790" class="band"/>
-  <text x="80" y="170" class="small">1. Start The Demo</text>
+  <rect x="70" y="138" width="124" height="32" class="badgeAlt"/>
+  <text x="91" y="159" class="badgeText">DARKMESH</text>
+  <rect x="210" y="138" width="118" height="32" class="badgePi"/>
+  <text x="227" y="159" class="badgeText">Raspberry Pi</text>
+  <rect x="344" y="138" width="112" height="32" class="badgeJetson"/>
+  <text x="366" y="159" class="badgeText">Jetson</text>
+  <rect x="472" y="138" width="222" height="32" class="badgeAnduril"/>
+  <text x="490" y="159" class="badgeText">Anduril Hawkeye/EagleEye</text>
+  <rect x="730" y="138" width="142" height="32" class="badge"/>
+  <text x="748" y="159" class="badgeText">Palantir Foundry</text>
 
-  <rect x="90" y="205" width="230" height="74" class="cmd"/>
-  <text x="124" y="238" class="text">npm run demo:start</text>
-  <text x="125" y="260" class="small">single operator command</text>
+  <text x="80" y="215" class="section">Squad Edge Ring</text>
+  <rect x="70" y="235" width="805" height="600" class="ringArea"/>
 
-  <rect x="90" y="325" width="230" height="82" class="cmd"/>
-  <text x="126" y="356" class="text">Start node API</text>
-  <text x="119" y="379" class="small">altiair-orin or Pi hub</text>
-  <text x="139" y="399" class="small">local endpoint</text>
+  <rect x="350" y="275" width="245" height="134" class="soldier"/>
+  <text x="405" y="310" class="text">Soldier A</text>
+  <text x="385" y="334" class="small">edge device + sensors</text>
+  <rect x="382" y="352" width="182" height="34" class="device"/>
+  <text x="407" y="374" class="small">camera | mic | report</text>
 
-  <rect x="90" y="455" width="230" height="74" class="cmd"/>
-  <text x="132" y="488" class="text">Wait for /health</text>
-  <text x="127" y="510" class="small">verify API readiness</text>
+  <rect x="110" y="505" width="245" height="134" class="soldier"/>
+  <text x="166" y="540" class="text">Soldier B</text>
+  <text x="145" y="564" class="small">edge device + sensors</text>
+  <rect x="142" y="582" width="182" height="34" class="device"/>
+  <text x="163" y="604" class="small">RFID | RF | audio</text>
 
-  <rect x="90" y="575" width="230" height="94" class="cmd"/>
-  <text x="126" y="607" class="text">demo:bootstrap</text>
-  <text x="118" y="631" class="small">mission deployment</text>
-  <text x="123" y="651" class="small">mock sensor scenario</text>
+  <rect x="590" y="505" width="245" height="134" class="soldier"/>
+  <text x="646" y="540" class="text">Soldier C</text>
+  <text x="625" y="564" class="small">edge device + sensors</text>
+  <rect x="622" y="582" width="182" height="34" class="device"/>
+  <text x="622" y="604" class="small">Hawkeye/EagleEye feed</text>
 
-  <path d="M205 279 L205 325" class="line"/>
-  <path d="M205 407 L205 455" class="line"/>
-  <path d="M205 529 L205 575" class="line"/>
+  <rect x="350" y="690" width="245" height="134" class="soldier"/>
+  <text x="405" y="725" class="text">Soldier D</text>
+  <text x="385" y="749" class="small">edge device + sensors</text>
+  <rect x="382" y="767" width="182" height="34" class="device"/>
+  <text x="403" y="789" class="small">RF | notes | relay</text>
 
-  <rect x="395" y="135" width="345" height="790" class="band"/>
-  <text x="420" y="170" class="small">2. Collect Partial Views</text>
+  <path d="M595 342 C730 350 805 440 800 520" class="ring"/>
+  <path d="M710 639 C680 740 610 760 595 760" class="ring"/>
+  <path d="M350 757 C235 750 160 675 155 640" class="ring"/>
+  <path d="M232 505 C250 390 335 350 350 342" class="ring"/>
 
-  <rect x="430" y="205" width="275" height="76" class="sensor"/>
-  <text x="490" y="238" class="text">Squad-carried sensors</text>
-  <text x="462" y="260" class="small">each node sees a fragment</text>
+  <text x="345" y="457" class="small">peer gossip</text>
+  <text x="344" y="477" class="small">signed records</text>
+  <text x="610" y="462" class="small">store-forward</text>
+  <text x="596" y="482" class="small">mission state</text>
+  <text x="285" y="665" class="small">ring survives</text>
+  <text x="290" y="685" class="small">node loss</text>
 
-  <rect x="415" y="330" width="135" height="78" class="sensor"/>
-  <text x="455" y="362" class="text">Camera</text>
-  <text x="442" y="384" class="small">visual cue</text>
+  <rect x="380" y="485" width="184" height="92" class="mesh"/>
+  <text x="406" y="520" class="text">Peer Ring</text>
+  <text x="413" y="545" class="small">store-forward</text>
+  <text x="400" y="565" class="small">replicated ledger</text>
 
-  <rect x="590" y="330" width="135" height="78" class="sensor"/>
-  <text x="623" y="362" class="text">Audio</text>
-  <text x="608" y="384" class="small">rotor-like</text>
+  <path d="M472 409 L472 485" class="soft"/>
+  <path d="M355 572 L380 542" class="soft"/>
+  <path d="M590 572 L564 542" class="soft"/>
+  <path d="M472 690 L472 577" class="soft"/>
 
-  <rect x="415" y="455" width="135" height="82" class="sensor"/>
-  <text x="446" y="487" class="text">RF / RFID</text>
-  <text x="428" y="509" class="small">location shape</text>
+  <text x="935" y="215" class="section">Product Intelligence Layer</text>
 
-  <rect x="590" y="455" width="135" height="82" class="sensor"/>
-  <text x="619" y="487" class="text">Operator</text>
-  <text x="624" y="509" class="small">report</text>
+  <rect x="925" y="255" width="250" height="100" class="mesh"/>
+  <text x="965" y="292" class="text">Local Filtering</text>
+  <text x="955" y="318" class="small">rules + local LLM assist</text>
+  <text x="948" y="338" class="small">drop noise, keep evidence</text>
 
-  <rect x="430" y="610" width="275" height="96" class="mesh"/>
-  <text x="477" y="642" class="text">Local edge filtering</text>
-  <text x="459" y="666" class="small">rules + local LLM assist</text>
-  <text x="455" y="687" class="small">send evidence, not raw streams</text>
+  <rect x="925" y="410" width="250" height="100" class="mesh"/>
+  <text x="955" y="447" class="text">Distributed Fusion</text>
+  <text x="953" y="473" class="small">confidence + freshness</text>
+  <text x="950" y="493" class="small">sources + contradictions</text>
 
-  <path d="M320 622 C360 622 385 245 430 245" class="line"/>
-  <path d="M568 281 L568 310 C525 310 483 310 483 330" class="line"/>
-  <path d="M568 281 L568 310 C612 310 658 310 658 330" class="line"/>
-  <path d="M483 408 L483 455" class="line"/>
-  <path d="M658 408 L658 455" class="line"/>
-  <path d="M483 537 C483 575 510 590 545 610" class="line"/>
-  <path d="M658 537 C658 575 625 590 590 610" class="line"/>
+  <rect x="925" y="565" width="250" height="108" class="review"/>
+  <text x="967" y="602" class="text">Cue Queue</text>
+  <text x="958" y="628" class="small">human-reviewable</text>
+  <text x="953" y="648" class="small">policy-gated output</text>
 
-  <rect x="780" y="135" width="325" height="790" class="band"/>
-  <text x="805" y="170" class="small">3. Fuse And Review</text>
+  <rect x="925" y="735" width="250" height="100" class="review"/>
+  <text x="957" y="772" class="text">Operator Display</text>
+  <text x="965" y="798" class="small">Pi-hosted / wearable</text>
+  <text x="970" y="818" class="small">acknowledge + review</text>
 
-  <rect x="815" y="210" width="255" height="88" class="mesh"/>
-  <text x="849" y="244" class="text">Signed evidence records</text>
-  <text x="849" y="268" class="small">compact, timestamped, cited</text>
+  <path d="M552 530 C710 530 790 305 925 305" class="line"/>
+  <path d="M1050 355 L1050 410" class="line"/>
+  <path d="M1050 510 L1050 565" class="line"/>
+  <path d="M1050 673 L1050 735" class="line"/>
 
-  <rect x="815" y="360" width="255" height="96" class="mesh"/>
-  <text x="849" y="394" class="text">Replicated mesh ledger</text>
-  <text x="847" y="418" class="small">peer gossip + store forward</text>
-  <text x="875" y="439" class="small">mission state cache</text>
+  <text x="1228" y="215" class="section">Data Link</text>
 
-  <rect x="815" y="520" width="255" height="92" class="mesh"/>
-  <text x="847" y="554" class="text">Coordinator election</text>
-  <text x="850" y="578" class="small">current-term authority</text>
-  <text x="858" y="598" class="small">leader or observe-only</text>
+  <rect x="1214" y="255" width="236" height="110" class="warn"/>
+  <text x="1238" y="292" class="text">Best-Connected</text>
+  <text x="1254" y="316" class="text">Edge Device</text>
+  <text x="1244" y="340" class="small">uploads + downloads</text>
 
-  <rect x="815" y="680" width="255" height="104" class="review"/>
-  <text x="846" y="714" class="text">CounterUasCue queue</text>
-  <text x="843" y="738" class="small">confidence, freshness, sources</text>
-  <text x="860" y="759" class="small">contradictions + policy</text>
+  <rect x="1230" y="440" width="220" height="118" class="cloud"/>
+  <text x="1272" y="480" class="text">Palantir Foundry</text>
+  <text x="1276" y="506" class="small">CASK data contract</text>
+  <text x="1262" y="526" class="small">ontology + after action</text>
 
-  <path d="M705 658 C748 658 760 254 815 254" class="line"/>
-  <path d="M943 298 L943 360" class="line"/>
-  <path d="M943 456 L943 520" class="line"/>
-  <path d="M943 612 L943 680" class="line"/>
+  <rect x="1230" y="630" width="220" height="108" class="cloud"/>
+  <text x="1272" y="668" class="text">Commander View</text>
+  <text x="1273" y="694" class="small">governed context</text>
+  <text x="1279" y="714" class="small">sync when online</text>
 
-  <rect x="1145" y="135" width="200" height="790" class="band"/>
-  <text x="1170" y="170" class="small">4. Operate And Reconcile</text>
+  <path d="M1175 260 C1193 230 1202 230 1214 260" class="greenLine"/>
+  <text x="1040" y="238" class="linkLabel">filtered evidence uplink</text>
+  <path d="M1175 468 C1195 388 1208 388 1230 468" class="greenLine"/>
+  <text x="1188" y="382" class="linkLabel">fused mission record</text>
+  <path d="M1340 365 L1340 440" class="line"/>
+  <path d="M1340 558 L1340 630" class="line"/>
+  <path d="M1230 690 C1205 625 1200 540 1175 495" class="greenDash"/>
+  <text x="1194" y="608" class="linkLabel">governed context back</text>
 
-  <rect x="1168" y="225" width="154" height="92" class="review"/>
-  <text x="1199" y="258" class="text">Local UI</text>
-  <text x="1193" y="282" class="small">human review</text>
-  <text x="1194" y="302" class="small">Pi-hosted view</text>
-
-  <polygon points="1245,385 1325,445 1245,505 1165,445" class="decision"/>
-  <text x="1205" y="438" class="text">Failure?</text>
-  <text x="1198" y="461" class="small">node or cloud</text>
-
-  <rect x="1168" y="560" width="154" height="102" class="fail"/>
-  <text x="1194" y="593" class="text">Recover</text>
-  <text x="1184" y="617" class="small">heartbeat miss</text>
-  <text x="1183" y="637" class="small">re-elect / observe</text>
-
-  <polygon points="1245,720 1325,780 1245,840 1165,780" class="decision"/>
-  <text x="1190" y="773" class="text">Uplink?</text>
-  <text x="1190" y="796" class="small">secure path</text>
-
-  <rect x="1045" y="865" width="150" height="76" class="review"/>
-  <text x="1084" y="896" class="text">Queue</text>
-  <text x="1069" y="918" class="small">local DDIL ops</text>
-
-  <rect x="1235" y="865" width="150" height="76" class="review"/>
-  <text x="1266" y="896" class="text">Foundry</text>
-  <text x="1254" y="918" class="small">CASK sync</text>
-
-  <path d="M1070 732 C1112 732 1135 272 1168 272" class="line"/>
-  <path d="M1245 317 L1245 385" class="line"/>
-  <path d="M1245 505 L1245 560" class="line"/>
-  <path d="M1245 662 L1245 720" class="line"/>
-  <path d="M1165 780 C1125 780 1120 825 1120 865" class="line"/>
-  <path d="M1325 780 C1360 780 1330 825 1310 865" class="line"/>
-  <path d="M1168 612 C1125 612 1115 300 1168 278" class="dash"/>
-
-  <text x="1270" y="535" class="label">yes</text>
-  <text x="1300" y="760" class="label">yes</text>
-  <text x="1125" y="760" class="label">no</text>
-  <text x="1264" y="363" class="label">no</text>
-
-  <rect x="70" y="935" width="1260" height="1" fill="#c8cfc3"/>
-  <text x="70" y="958" class="small">DDIL: Degraded, Denied, Intermittent, and Limited connectivity. The demo keeps local evidence and cueing alive without assuming cloud access.</text>
+  <rect x="925" y="875" width="525" height="92" class="legend"/>
+  <text x="955" y="904" class="small">Darkmesh boundary: local edge devices keep operating in DDIL conditions.</text>
+  <text x="955" y="926" class="small">Foundry/CASK is the governed command record when connectivity exists,</text>
+  <text x="955" y="948" class="small">not a dependency for local cueing.</text>
 </svg>
