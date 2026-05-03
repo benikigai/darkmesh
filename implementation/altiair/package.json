@@ -1,0 +1,56 @@
+{
+  "name": "altiair-cask-edge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local CASK edge integration scaffold for Foundry OSDK, Pi sensor bundles, and local LLM insight drafts.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "agent:check": "cargo check -p altiair-agent",
+    "agent:run": "cargo run -p altiair-agent",
+    "agent:smoke": "bash scripts/agent-smoke.sh",
+    "agent:test": "cargo test -p altiair-agent",
+    "build": "tsc --noEmit",
+    "coordinator:smoke": "tsx src/scripts/coordinator-smoke.ts",
+    "cask:ontology": "tsx src/scripts/cask-ontology.ts",
+    "demo:bootstrap": "tsx src/scripts/demo-bootstrap.ts",
+    "demo:start": "bash scripts/demo-start.sh",
+    "foundry:direct:intel": "bash -lc 'set -a; source .env; set +a; FOUNDRY_MODE=osdk tsx src/scripts/foundry-intelligence-smoke.ts'",
+    "foundry:direct:smoke": "bash -lc 'set -a; source .env; set +a; FOUNDRY_MODE=osdk tsx src/scripts/smoke.ts --foundry'",
+    "foundry:intel:smoke": "tsx src/scripts/foundry-intelligence-smoke.ts",
+    "fusion:smoke": "tsx src/scripts/fusion-smoke.ts",
+    "hawkeye:feed": "tsx src/scripts/hawkeye-feed.ts",
+    "llm:cask:smoke": "tsx src/scripts/local-llm-cask-smoke.ts",
+    "live:mesh:integration": "tsx src/scripts/live-mesh-integration.ts",
+    "mesh:plan": "tsx src/scripts/mesh-plan.ts",
+    "mesh:proof": "bash scripts/jetson/operator-mesh-proof.sh",
+    "mesh:proof:remote": "bash scripts/jetson/operator-mesh-proof.sh --remote-integration",
+    "mesh:smoke": "tsx src/scripts/mesh-smoke.ts",
+    "fleet:llm:check": "bash scripts/jetson/fleet-local-llm.sh --check",
+    "mission:smoke": "tsx src/scripts/mission-deploy-smoke.ts",
+    "mock:scenario": "tsx src/scripts/mock-scenario.ts",
+    "mock:replay": "tsx src/scripts/mock-scenario.ts --replay",
+    "node:api": "tsx src/scripts/node-api.ts",
+    "node:api:foundry": "bash -lc 'set -a; source .env; set +a; FOUNDRY_MODE=osdk tsx src/scripts/node-api.ts'",
+    "replication:smoke": "tsx src/scripts/replication-smoke.ts",
+    "security:smoke": "tsx src/scripts/security-smoke.ts",
+    "sensor:merge": "tsx src/scripts/sensor-merge.ts",
+    "sensor:merge:smoke": "tsx src/scripts/sensor-merge-smoke.ts",
+    "stream:smoke": "tsx src/scripts/stream-smoke.ts",
+    "tag:smoke": "tsx src/scripts/tag-smoke.ts",
+    "workflow:smoke": "bash scripts/workflow-smoke.sh",
+    "smoke:mock": "tsx src/scripts/smoke.ts",
+    "smoke:foundry": "FOUNDRY_MODE=osdk tsx src/scripts/smoke.ts --foundry"
+  },
+  "dependencies": {
+    "@osdk/client": "^2.13.0",
+    "@osdk/oauth": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

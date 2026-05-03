@@ -1,20 +1,20 @@
 
-darkmesh by Altair: Resilient Edge Intelligence for DDIL Operations
+DarkMesh by Altiair: Resilient Edge Intelligence for DDIL Operations
 
 We built the tactical intelligence layer that keeps a squad operational after their command node is destroyed."
 
 ---
 
 Opening - the PAIN:
->  A squad in a jammed or cloud-denied battlefield has multiple sensors seeing different things. One soldier sees a drone. Another hears rotor sound. A third gets an RF ping." 
+>  A squad in a jammed or cloud-denied battlefield has multiple sensors seeing different things. One soldier sees a drone. Another hears rotor sound. A third gets an RF ping."
 
 And if the central command node goes down — the whole unit fails. DARPA just issued a program for this two weeks ago because this is a huge unsolved problem."
 
 ---
 What we built:
-> darkmesh turns disconnected soldier nodes into a resilient tactical edge mesh: it fuses sensor evidence gathered from across the field into one coherent picture, processes it using intelligence, and coordinates the team toward the mission goal, and keeping the mission operational when a node dies.
+> DarkMesh turns disconnected soldier nodes into a resilient tactical edge mesh: it fuses sensor evidence gathered from across the field into one coherent picture, processes it using intelligence, and coordinates the team toward the mission goal, and keeping the mission operational when a node dies.
 
-Each node is a soldier. Raspberry Pi handles sensor I/O — camera, microphone, RFID. Jetson Nano runs the AI locally. No cloud required. 
+Each node is a soldier. Raspberry Pi handles sensor I/O — camera, microphone, RFID. Jetson Nano runs the AI locally. No cloud required.
 
 Army operators told us directly: the bottleneck isn't sensors, it's fusion under fire. This is built for that exact problem.
 
@@ -26,7 +26,7 @@ Existing tactical systems either require cloud connectivity or put all intellige
 ---
 Live Demo:
 
-![darkmesh demo flow chart](assets/pitch/demo-flow-chart.svg)
+![DarkMesh demo flow chart](assets/pitch/demo-flow-chart.svg)
 
 Dashboard opens — tactical map, 4 nodes live, all green
 Camera feed active — YOLO detects object, visual confidence updates live on dashboard
@@ -45,7 +45,7 @@ Why this order matters: You go chaos → fusion → action. That arc is the prod
 
 ---
 The KILL moment:
-> Now we simulate the failure every traditional system fails on. 
+> Now we simulate the failure every traditional system fails on.
 Most systems solve this in software simulation. We built it in hardware, running live. (adresses creativity in the judging criteria)
 
 The command node — Node 1, the current coordinator — goes down.
@@ -63,11 +63,11 @@ On screen, they should see:
 
 > Node 2 detected the missed heartbeat. It already had the full mission state — because that state lives on every node simultaneously, not just the coordinator. New leader elected. Instructions resume. **The mission doesn't know the coordinator died.**
 
-Punchline: "That is the architectural difference. Centralized systems die when the command node dies. darkmesh doesn't have a command node."
+Punchline: "That is the architectural difference. Centralized systems die when the command node dies. DarkMesh doesn't have a command node."
 
 ---
 Palantir - After Action
-> At the edge, we run CASK — Foundry's local brain — same ontology, same data contracts, no internet required. When connectivity returns, everything syncs to Palantir Foundry automatically - every sensor event, every fusion decision, every coordinator directive. 
+> At the edge, we run CASK — Foundry's local brain — same ontology, same data contracts, no internet required. When connectivity returns, everything syncs to Palantir Foundry automatically - every sensor event, every fusion decision, every coordinator directive.
 
 ---
 

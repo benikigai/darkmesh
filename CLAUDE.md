@@ -1,10 +1,10 @@
-# Claude Handoff For darkmesh
+# Claude Handoff For DarkMesh
 
-Use this file as the technical and narrative source of truth when improving the public `darkmesh` site, pitch copy, or evaluator-facing explanation.
+Use this file as the technical and narrative source of truth when improving the public `DarkMesh` site, pitch copy, or evaluator-facing explanation.
 
 ## One-Sentence Product Definition
 
-`darkmesh` by Altair is a decentralized edge-coordination layer that fuses local sensor evidence, coordinates surviving nodes, and syncs CASK-shaped mission records back to Palantir Foundry when connectivity allows.
+`DarkMesh` by Altiair is a decentralized edge-coordination layer that fuses local sensor evidence, coordinates surviving nodes, and syncs CASK-shaped mission records back to Palantir Foundry when connectivity allows.
 
 ## The Open Military Problem
 
@@ -17,40 +17,40 @@ The relevant open problem is not simply "detect a drone." The harder problem is 
 - A single coordinator, gateway, or display may fail.
 - Operators still need one useful, explainable, current, human-reviewed cue.
 
-darkmesh demonstrates the missing layer between sensors and command software: local evidence normalization, compact record sharing, local model-assisted explanation, coordinator election, replicated mission state, and Foundry/CASK reconciliation.
+DarkMesh demonstrates the missing layer between sensors and command software: local evidence normalization, compact record sharing, local model-assisted explanation, coordinator election, replicated mission state, and Foundry/CASK reconciliation.
 
 ## Exact Government Opportunity Sources
 
 Use these exact references and name the source vehicle precisely.
 
-1. **DARPA DICE, DARPA-SN-26-72**  
-   Title: `Decentralized Artificial Intelligence through Controlled Emergence (DICE)` Proposers Day.  
-   Published: April 28, 2026. Deadline: May 19, 2026. Proposers Day: May 29, 2026.  
-   Source: https://www.darpa.mil/research/programs/decentralized-artificial-intelligence-through-controlled-emergence  
-   Fit: decentralized coordination, local inference control, peer-to-peer agent teams, resilience to failure/compromise, contested environments, and commander-aligned behavior. darkmesh is a practical demo analogue, not a DICE contract claim.
+1. **DARPA DICE, DARPA-SN-26-72**
+   Title: `Decentralized Artificial Intelligence through Controlled Emergence (DICE)` Proposers Day.
+   Published: April 28, 2026. Deadline: May 19, 2026. Proposers Day: May 29, 2026.
+   Source: https://www.darpa.mil/research/programs/decentralized-artificial-intelligence-through-controlled-emergence
+   Fit: decentralized coordination, local inference control, peer-to-peer agent teams, resilience to failure/compromise, contested environments, and commander-aligned behavior. DarkMesh is a practical demo analogue, not a DICE contract claim.
 
-2. **CDAO / OSW Swarm Forge Prototype Project CFWP**  
-   Issuing office: Chief Digital Artificial Intelligence Office. Date of issuance: March 16, 2026. Proposal due: April 17, 2026.  
-   Source: https://www.tradewindai.com/swarm-forge  
-   Fit: command, control, and collaboration of autonomous systems; DDIL operation; counter-UAS; distributed communications swarms; deception/information operations. darkmesh fits as edge coordination/data fabric for human-reviewed cueing, not as a full autonomous swarm package.
+2. **CDAO / OSW Swarm Forge Prototype Project CFWP**
+   Issuing office: Chief Digital Artificial Intelligence Office. Date of issuance: March 16, 2026. Proposal due: April 17, 2026.
+   Source: https://www.tradewindai.com/swarm-forge
+   Fit: command, control, and collaboration of autonomous systems; DDIL operation; counter-UAS; distributed communications swarms; deception/information operations. DarkMesh fits as edge coordination/data fabric for human-reviewed cueing, not as a full autonomous swarm package.
 
-3. **Army NGC2 prototype OTA / CSO acquisition path**  
-   Source: https://www.army.mil/article-amp/287180/army_announces_next_generation_command_and_control_ngc2_prototype_award  
-   Fit: integrated/scalable C2 suite across hardware, software, and applications through a common integrated data layer. The Army release also notes additional vendor competition through a CSO. darkmesh shows commodity edge nodes writing and sharing interoperable mission records.
+3. **Army NGC2 prototype OTA / CSO acquisition path**
+   Source: https://www.army.mil/article-amp/287180/army_announces_next_generation_command_and_control_ngc2_prototype_award
+   Fit: integrated/scalable C2 suite across hardware, software, and applications through a common integrated data layer. The Army release also notes additional vendor competition through a CSO. DarkMesh shows commodity edge nodes writing and sharing interoperable mission records.
 
-4. **CDAO Open DAGIR**  
-   Source: https://www.ai.mil/Latest/News-Press/PR-View/Article/4026085/cdao-highlights-progress-in-scaling-data-and-ai-capabilities-at-six-month-mark/  
-   Fit: competitive acquisition for interoperable DoD data/app repositories, spanning strategic C2 to tactical edge. darkmesh should be framed as interoperable with Foundry/CASK, not as a silo.
+4. **CDAO Open DAGIR**
+   Source: https://www.ai.mil/Latest/News-Press/PR-View/Article/4026085/cdao-highlights-progress-in-scaling-data-and-ai-capabilities-at-six-month-mark/
+   Fit: competitive acquisition for interoperable DoD data/app repositories, spanning strategic C2 to tactical edge. DarkMesh should be framed as interoperable with Foundry/CASK, not as a silo.
 
-5. **Army PB 2026 NGC2 Prototyping budget justification**  
-   Source: https://www.asafm.army.mil/Portals/72/Documents/BudgetMaterial/2026/Discretionary%20Budget/rdte/RDTE%20-%20Vol%202%20-%20Budget%20Activity%204B.pdf  
-   Fit: common data fabric, third-party data integration, modular C2, cloud/AI/cybersecurity-enabled C2. darkmesh maps to the edge proof of that common data fabric.
+5. **Army PB 2026 NGC2 Prototyping budget justification**
+   Source: https://www.asafm.army.mil/Portals/72/Documents/BudgetMaterial/2026/Discretionary%20Budget/rdte/RDTE%20-%20Vol%202%20-%20Budget%20Activity%204B.pdf
+   Fit: common data fabric, third-party data integration, modular C2, cloud/AI/cybersecurity-enabled C2. DarkMesh maps to the edge proof of that common data fabric.
 
-6. **CJADC2 edge sensor-fusion technical requirement framing**  
-   Source: https://militaryembedded.com/ai/machine-learning/cjadc2-interoperability-ai-ml-based-sensor-fusion-at-the-edge  
+6. **CJADC2 edge sensor-fusion technical requirement framing**
+   Source: https://militaryembedded.com/ai/machine-learning/cjadc2-interoperability-ai-ml-based-sensor-fusion-at-the-edge
    Fit: edge processing, data standardization, security, scalability, storing data at the edge and forwarding when connectivity allows. Use as a technical requirement and rationale source.
 
-Best compact formulation: "darkmesh aligns with DICE-style decentralized AI coordination, Swarm Forge DDIL command/collaboration needs, NGC2 common-data-layer modernization, Open DAGIR interoperability, and CJADC2 edge sensor-fusion requirements."
+Best compact formulation: "DarkMesh aligns with DICE-style decentralized AI coordination, Swarm Forge DDIL command/collaboration needs, NGC2 common-data-layer modernization, Open DAGIR interoperability, and CJADC2 edge sensor-fusion requirements."
 
 ## Where Existing Tech Fits
 
@@ -59,11 +59,11 @@ Use this framing:
 - **Hawkeye**: visual or sensor lane. It contributes observations such as drone-class visual tracks, camera frames, or visual confidence.
 - **Palantir Foundry**: governed mission context and commander-side system of record. It provides mission data, policy context, asset/tag mappings, audit trail, and after-action replay.
 - **CASK**: mission ontology and data contract. CASK-shaped records let the same evidence bundle exist locally at the edge and later reconcile into Foundry.
-- **darkmesh**: decentralized edge runtime. It runs when the network is degraded, keeps the mesh coordinated, elects or degrades coordinator authority, and presents the operator with a cue instead of raw feeds.
+- **DarkMesh**: decentralized edge runtime. It runs when the network is degraded, keeps the mesh coordinated, elects or degrades coordinator authority, and presents the operator with a cue instead of raw feeds.
 
-Do not pitch darkmesh as replacing Foundry, Hawkeye, radios, IVAS, Nett Warrior, or certified tactical systems. Pitch it as a low-cost, interoperable edge layer beside them.
+Do not pitch DarkMesh as replacing Foundry, Hawkeye, radios, IVAS, Nett Warrior, or certified tactical systems. Pitch it as a low-cost, interoperable edge layer beside them.
 
-One-line integration story: Hawkeye sees, Foundry governs and records, CASK shapes the mission data, and darkmesh coordinates the edge when the uplink or a node fails.
+One-line integration story: Hawkeye sees, Foundry governs and records, CASK shapes the mission data, and DarkMesh coordinates the edge when the uplink or a node fails.
 
 ## Demo Flow
 
@@ -115,6 +115,8 @@ The implementation repo has already built the important path:
 
 The public repo is a static Vercel shell around this deeper implementation. It should not duplicate secrets, raw logs, Foundry URLs, private access details, or private media.
 
+The implementation snapshot has been copied into this repo at `implementation/altiair` from `digitalnomd/altiair` `origin/main` commit `5f668eb`. Treat that directory as the code-bearing proof path and keep the root website as the public operator/evaluator surface.
+
 ## Safe Pitch Language
 
 Strong language to use:
@@ -137,7 +139,7 @@ Language to avoid:
 
 ## Deployment Notes
 
-The site repo is `benikigai/darkmesh`; the deeper project repo is `digitalnomd/altiair`.
+The site repo is `benikigai/darkmesh`; the imported implementation snapshot is under `implementation/altiair` and came from `digitalnomd/altiair`.
 
 Target domain: `darkmesh.us`.
 

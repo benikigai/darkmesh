@@ -1,22 +1,28 @@
-# darkmesh
+# DarkMesh
 
-darkmesh is Altair's live demo site for tactical edge mesh coordination in DDIL environments. It shows how Hawkeye-style sensors, Palantir Foundry, CASK-shaped mission data, and decentralized local nodes fit together for resilient human-reviewed cueing.
+DarkMesh is Altiair's live demo site for tactical edge mesh coordination in DDIL environments. It shows how Hawkeye-style sensors, Palantir Foundry, CASK-shaped mission data, and decentralized local nodes fit together for resilient human-reviewed cueing.
 
-- Site: [darkmesh.us](https://darkmesh.us)
+- Site: [DarkMesh.us](https://darkmesh.us)
 - Project repo: [github.com/digitalnomd/altiair](https://github.com/digitalnomd/altiair)
-- Team: Altair (Sarah Hatcher, Benjamin Shyong, Rob Grossman, Katherine Lambert)
+- Team: Altiair (Sarah Hatcher, Benjamin Shyong, Rob Grossman, Katherine Lambert)
+- Implementation snapshot: [implementation/altiair](implementation/altiair), imported from `digitalnomd/altiair` `origin/main` at `5f668eb`.
 
 ## What the site shows
 
 - Mission premise and military benefit.
-- Where Hawkeye, Foundry, CASK, and darkmesh sit in the workflow.
+- Where Hawkeye, Foundry, CASK, and DarkMesh sit in the workflow.
 - Live-demo sequence: mission directive, Foundry context, CASK deployment, node leases, sensor fan-in, local model fusion, coordinator failover, Foundry writeback.
 - SSH-triggered node-dropout narrative so the Pi bench can stay powered while the coordinator/failover proof remains live.
 - UML-style architecture view with policy gates, encrypted payloads, signed records, replicated ledger, and Rust durable-agent path.
+- Rob's latest product-flow chart and pitch artifacts from the implementation repo.
+
+## Hardware image
+
+The Raspberry Pi / Jetson setup photo should be committed at [assets/hardware/darkmesh-pis.jpg](assets/hardware/darkmesh-pis.jpg). The site has a dedicated hardware section that uses this image when present, while the demo narrative makes clear the Pis remain on the bench and are accessed by SSH.
 
 ## Government opportunity alignment
 
-darkmesh maps to current DoD demand signals around decentralized AI coordination, DDIL swarm/robotic command, NGC2 common data layers, Open DAGIR interoperability, and CJADC2 edge sensor fusion:
+DarkMesh maps to current DoD demand signals around decentralized AI coordination, DDIL swarm/robotic command, NGC2 common data layers, Open DAGIR interoperability, and CJADC2 edge sensor fusion:
 
 - DARPA special notice: [DARPA-SN-26-72, Decentralized Artificial Intelligence through Controlled Emergence (DICE)](https://www.darpa.mil/research/programs/decentralized-artificial-intelligence-through-controlled-emergence)
 - CDAO call for white papers: [Swarm Forge Prototype Project](https://www.tradewindai.com/swarm-forge)

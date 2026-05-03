@@ -1,0 +1,12 @@
+node_modules/
+target/
+dist/
+.env
+.env.*
+!.env.example
+.npmrc
+.secrets/
+npm-debug.log*
+*.tsbuildinfo
+__pycache__/
+models/__pycache__/

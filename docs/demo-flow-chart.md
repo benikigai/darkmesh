@@ -1,6 +1,6 @@
-# darkmesh Demo Flow Chart
+# DarkMesh Demo Flow Chart
 
-![darkmesh demo flow chart](../assets/pitch/demo-flow-chart.svg)
+![DarkMesh demo flow chart](../assets/pitch/demo-flow-chart.svg)
 
 ## Editable Mermaid Source
 
