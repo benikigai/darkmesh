@@ -25,6 +25,7 @@
   --region-amber: rgba(47, 125, 91, 0.2);
   --region-amber-strong: rgba(47, 125, 91, 0.7);
   --shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+  --brand-font: Nasalization, "Arial Rounded MT Bold", "Eurostile Extended", Orbitron, Michroma, Futura, Arial, sans-serif;
 }
 
 * {
@@ -165,10 +166,11 @@ button {
 .hero-title {
   margin: 0;
   color: var(--amber);
+  font-family: var(--brand-font);
   font-size: 6.2rem;
   line-height: 0.88;
-  font-weight: 900;
-  letter-spacing: 0;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   white-space: nowrap;
 }
 
@@ -648,6 +650,9 @@ h1 {
 
 .brand-lockup h1 {
   color: var(--amber);
+  font-family: var(--brand-font);
+  font-weight: 400;
+  letter-spacing: 0.08em;
 }
 
 .command-readout {
