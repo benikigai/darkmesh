@@ -384,17 +384,29 @@
         </div>
       </section>
 
-      <section class="bench-section" aria-label="Pi 5 bench setup running the live mesh">
+      <section class="bench-section" aria-label="Edge fleet bench setup running the live mesh">
         <div class="bench-copy">
           <p class="eyebrow">Live at the bench</p>
-          <h2>Running right now on a Pi 5 at our desk.</h2>
+          <h2>Running right now on a Jetson Nano, three Raspberry Pis, and an iPad chest computer.</h2>
           <p>
-            The mesh isn't a slide. <code>altiair-hub</code> is a Raspberry Pi 5 sitting on the team bench, powered on, joined to the local Altiair-LAN over Wi-Fi, running the same node API, Ollama-served Gemma 4 e2b inference, and CASK evidence-bundle pipeline that the rest of the fleet exposes. Foundry / CASK sync queues locally until any gateway gets an uplink. Pull power from any one node and the surviving peers keep the mission picture.
+            The mesh isn't a slide. A four-node fleet — Jetson Orin Nano <code>altiair-orin</code>, Raspberry Pi 5 <code>altiair-hub</code>, and two Raspberry Pi 4B sensor peers <code>altiair-node-a</code> / <code>altiair-node-b</code> — sits at the team bench, joined to the local Altiair-LAN over Wi-Fi, running the same node API, Ollama-served Gemma 4 e2b inference, and CASK evidence-bundle pipeline. An iPad on a chest harness mirrors the operator console as a wearable EagleEye-style display. Foundry / CASK sync queues locally until any gateway gets an uplink. Pull power from any one node and the surviving peers keep the mission picture.
           </p>
           <ul class="bench-facts">
             <li>
+              <strong>altiair-orin</strong>
+              Jetson Orin Nano · LAN host · USB mic · accelerated inference · secondary Foundry gateway
+            </li>
+            <li>
               <strong>altiair-hub</strong>
-              Pi 5 hub · operator display · local queue · preferred Foundry / CASK gateway
+              Pi 5 · operator display · USB camera · local queue · preferred Foundry / CASK gateway
+            </li>
+            <li>
+              <strong>altiair-node-a / altiair-node-b</strong>
+              Pi 4B · edge sensors · RFID + provider-style location · replicated ledger
+            </li>
+            <li>
+              <strong>iPad chest computer</strong>
+              Wearable operator console · live mesh + cue overlay · EagleEye-style readout
             </li>
             <li>
               <strong>Local LAN mesh on Wi-Fi</strong>
@@ -406,13 +418,13 @@
             </li>
             <li>
               <strong>Survivable</strong>
-              Replicated ledger, gossip, Raft-style coordinator across four nodes
+              Replicated ledger, gossip, and Raft-style coordinator across all four nodes
             </li>
           </ul>
         </div>
         <figure class="bench-visual">
-          <img src="./assets/hardware/darkmesh-pis.jpg" alt="Pi 5 mesh node powered on at the team bench, running DarkMesh on local Altiair-LAN over Wi-Fi" />
-          <figcaption>altiair-hub · powered on, joined to Altiair-LAN, running the same code as the live demo above.</figcaption>
+          <img src="./assets/hardware/darkmesh-pis.jpg" alt="Edge fleet at the team bench: Jetson Orin Nano, Raspberry Pi 5 hub, two Pi 4B sensor peers, and iPad chest-worn operator console, joined to local Altiair-LAN over Wi-Fi" />
+          <figcaption>Edge fleet at the bench — running the same code as the live demo above.</figcaption>
         </figure>
       </section>
 
